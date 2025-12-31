@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import walkthroughVideo from '../../assets/Infolexus walk through.mp4';
+import walkthroughVideo from '../../assets/infolexus_walkthrough.mp4';
 
 const Walkthrough = ({ onComplete }) => {
     const videoRef = useRef(null);
