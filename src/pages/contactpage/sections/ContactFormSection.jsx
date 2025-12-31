@@ -69,7 +69,7 @@ const ContactFormSection = () => {
         <div className="container mx-auto px-4 md:px-6 py-16 -mt-10">
             <div className="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row">
                 {/* Contact Info */}
-                <div className="bg-slate-900 text-white p-10 md:p-12 md:w-2/5 flex flex-col justify-between">
+                <div className="bg-[#081A4A]/95 text-white p-10 md:p-12 md:w-2/5 flex flex-col justify-between">
                     <div>
                         <h2 className="text-2xl font-bold mb-8">Contact Information</h2>
                         <div className="space-y-8">
@@ -210,6 +210,18 @@ const ContactFormSection = () => {
                         </button>
                     </form>
                 </div>
+            </div>
+
+            {/* Map Section */}
+            <div className="mt-16 w-full h-[400px] rounded-3xl overflow-hidden shadow-xl border border-slate-200">
+                <iframe
+                    title="Office Location"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.347263595567!2d76.9889976757065!3d11.006997092116035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba859eb03584a43%3A0x32befeb42d4f385a!2sInfolexus%20Solutions!5e0!3m2!1sen!2sin!4v1713437292323!5m2!1sen!2sin"
+                    className="w-full h-full"
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
             </div>
         </div>
     );

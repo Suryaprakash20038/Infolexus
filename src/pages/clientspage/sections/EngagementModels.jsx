@@ -37,7 +37,7 @@ const EngagementModels = () => {
                 </div>
 
                 <div className="max-w-4xl mx-auto">
-                    <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-6 relative">
                         {models.map((model, idx) => (
                             <motion.div
                                 key={idx}

@@ -5,8 +5,8 @@ import { ArrowRight } from 'lucide-react';
 
 const TechCTA = () => {
     return (
-        <section className="py-24 bg-slate-900 relative overflow-hidden text-center">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/40 via-slate-900 to-slate-900" />
+        <section className="py-24 bg-[#081A4A] relative overflow-hidden text-center">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/40 via-[#081A4A]/95 to-[#081A4A]/95" />
 
             <div className="container mx-auto px-4 relative z-10">
                 <h2 className="text-3xl md:text-5xl font-bold text-white mb-8">

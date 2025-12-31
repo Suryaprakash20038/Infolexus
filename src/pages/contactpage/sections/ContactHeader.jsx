@@ -42,12 +42,12 @@ const ContactHeader = () => {
                         </p>
 
                         {/* Contact Details Cards */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto pt-[15px]">
 
                             {/* Card 1: Email */}
                             <motion.div
                                 whileHover={{ y: -5 }}
-                                className="flex flex-col items-center justify-center p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-cyan-500/30 transition-all group text-center min-h-[160px] shadow-lg"
+                                className="flex flex-col items-center justify-center p-6 pt-[39px] rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-cyan-500/30 transition-all group text-center min-h-[160px] shadow-lg"
                             >
                                 <div className="relative mb-4">
                                     <div className="absolute inset-0 bg-cyan-500/20 blur-xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-500" />
@@ -64,7 +64,7 @@ const ContactHeader = () => {
                             {/* Card 2: Phone */}
                             <motion.div
                                 whileHover={{ y: -5 }}
-                                className="flex flex-col items-center justify-center p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-cyan-500/30 transition-all group text-center min-h-[160px] shadow-lg"
+                                className="flex flex-col items-center justify-center p-6 pt-[39px] rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-cyan-500/30 transition-all group text-center min-h-[160px] shadow-lg"
                             >
                                 <div className="relative mb-4">
                                     <div className="absolute inset-0 bg-cyan-500/20 blur-xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-500" />
@@ -80,7 +80,7 @@ const ContactHeader = () => {
                             {/* Card 3: Location */}
                             <motion.div
                                 whileHover={{ y: -5 }}
-                                className="flex flex-col items-center justify-center p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-cyan-500/30 transition-all group text-center min-h-[160px] shadow-lg"
+                                className="flex flex-col items-center justify-center p-6 pt-[39px] rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-cyan-500/30 transition-all group text-center min-h-[160px] shadow-lg"
                             >
                                 <div className="relative mb-4">
                                     <div className="absolute inset-0 bg-cyan-500/20 blur-xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-500" />

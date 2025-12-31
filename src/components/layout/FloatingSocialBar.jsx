@@ -11,15 +11,12 @@ import {
     RiCloseLine
 } from 'react-icons/ri';
 import { ChevronUp } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
+
 
 const FloatingSocialBar = () => {
     const [showTopBtn, setShowTopBtn] = useState(false);
     const [isOpen, setIsOpen] = useState(false); // For Mobile
     const [isDesktopOpen, setIsDesktopOpen] = useState(false); // For Desktop non-home pages
-
-    const location = useLocation();
-    const isHomePage = location.pathname === '/';
 
     useEffect(() => {
         const handleScroll = () => {
@@ -33,13 +30,6 @@ const FloatingSocialBar = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-
-    // Reset desktop open state when rendering on home page to avoid state staleness if navigating back
-    useEffect(() => {
-        if (isHomePage) {
-            setIsDesktopOpen(false);
-        }
-    }, [isHomePage]);
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -61,7 +51,7 @@ const FloatingSocialBar = () => {
             className="fixed right-4 bottom-6 z-50 flex flex-col items-center gap-3 pointer-events-auto"
             onMouseLeave={() => {
                 setIsOpen(false);
-                if (!isHomePage) setIsDesktopOpen(false);
+                setIsDesktopOpen(false);
             }}
         >
             {/* Desktop View */}
@@ -72,9 +62,9 @@ const FloatingSocialBar = () => {
                     - If Not HomePage: Show links only if isDesktopOpen is true.
                 */}
                 <AnimatePresence>
-                    {(isHomePage || isDesktopOpen) && (
+                    {isDesktopOpen && (
                         <motion.div
-                            initial={isHomePage ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 10, scale: 0.8 }}
+                            initial={{ opacity: 0, y: 10, scale: 0.8 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 10, scale: 0.8 }}
                             transition={{ duration: 0.2 }}
@@ -103,16 +93,14 @@ const FloatingSocialBar = () => {
                     )}
                 </AnimatePresence>
 
-                {/* Toggle Button for Desktop on Non-Home Pages */}
-                {!isHomePage && (
-                    <button
-                        onClick={() => setIsDesktopOpen(!isDesktopOpen)}
-                        className="flex items-center justify-center w-12 h-12 bg-white text-gray-800 rounded-full shadow-lg hover:bg-gray-100 transition-all duration-300 border border-gray-200"
-                        title={isDesktopOpen ? "Close" : "Show Social Links"}
-                    >
-                        {isDesktopOpen ? <RiCloseLine size={24} /> : <RiLinksFill size={24} />}
-                    </button>
-                )}
+                {/* Toggle Button for Desktop */}
+                <button
+                    onClick={() => setIsDesktopOpen(!isDesktopOpen)}
+                    className="flex items-center justify-center w-12 h-12 bg-white text-gray-800 rounded-full shadow-lg hover:bg-gray-100 transition-all duration-300 border border-gray-200"
+                    title={isDesktopOpen ? "Close" : "Show Social Links"}
+                >
+                    {isDesktopOpen ? <RiCloseLine size={24} /> : <RiLinksFill size={24} />}
+                </button>
             </div>
 
             {/* Mobile/Tablet: Toggleable Links */}

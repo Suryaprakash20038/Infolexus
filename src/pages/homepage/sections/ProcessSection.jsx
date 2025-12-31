@@ -135,7 +135,7 @@ export default function ProcessSection() {
             {/* MAIN CIRCULAR CONTAINER 
                 Mobile: R=120px. Desktop: R=220px.
             */}
-            <div className="relative w-full max-w-[900px] h-[450px] md:h-[600px] flex items-center justify-center [--radius:120px] md:[--radius:220px]">
+            <div className="relative w-full max-w-[900px] h-[550px] md:h-[700px] flex items-center justify-center [--radius:120px] md:[--radius:220px]">
 
                 {/* OUTER ORBIT RINGS */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -206,12 +206,14 @@ export default function ProcessSection() {
                         <div
                             key={s.id}
                             className={`absolute transition-all duration-1000 ease-out z-30
-                            ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}
+                            ${isVisible ? 'opacity-100' : 'opacity-0'}`}
                             style={{
                                 transitionDelay: `${index * 150}ms`,
                                 left: `calc(50% + (${x} * var(--radius)))`,
                                 top: `calc(50% + (${y} * var(--radius)))`,
-                                transform: 'translate(-50%, -50%)'
+                                transform: isVisible
+                                    ? 'translate(-50%, -50%)'
+                                    : `translate(calc(-50% + ${x * 800}px), calc(-50% + ${y * 800}px))`
                             }}
                         >
                             <div className="relative group cursor-pointer flex flex-col items-center">

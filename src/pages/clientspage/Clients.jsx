@@ -12,15 +12,15 @@ const Clients = () => {
     }, []);
 
     return (
-        <div className="pt-20 font-sans bg-slate-50 min-h-screen">
+        <div className="font-sans bg-slate-50 min-h-screen">
             <ClientsHero />
-             <ClientImpact />
-            
+            <ClientImpact />
+
             <ClientsProjectShowcase />
-           
-           
+
+
             <EngagementModels />
-             <MarketsWeServe />
+            <MarketsWeServe />
         </div>
     );
 };

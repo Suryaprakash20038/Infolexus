@@ -12,7 +12,10 @@ const ApplicationForm = () => {
         email: '',
         phone: '',
         position: '',
-        message: ''
+        message: '',
+        experienceLevel: 'Fresher',
+        yearsOfExperience: '',
+        isCustomPosition: false
     });
 
     const handleChange = (e) => {
@@ -145,24 +148,89 @@ const ApplicationForm = () => {
                     />
                 </div>
 
+                {/* Experience Level */}
+                <div className="grid grid-cols-2 gap-4">
+                    <div>
+                        <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Experience Level</label>
+                        <select
+                            name="experienceLevel"
+                            value={formData.experienceLevel}
+                            onChange={(e) => {
+                                setFormData(prev => ({
+                                    ...prev,
+                                    experienceLevel: e.target.value,
+                                    yearsOfExperience: e.target.value === 'Fresher' ? '' : prev.yearsOfExperience
+                                }));
+                            }}
+                            className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 text-sm font-medium"
+                        >
+                            <option value="Fresher">Fresher</option>
+                            <option value="Experienced">Experienced</option>
+                        </select>
+                    </div>
+
+                    {formData.experienceLevel === 'Experienced' && (
+                        <div>
+                            <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Years of Exp</label>
+                            <input
+                                type="number"
+                                name="yearsOfExperience"
+                                placeholder="e.g. 2.5"
+                                value={formData.yearsOfExperience}
+                                onChange={handleChange}
+                                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 text-sm font-medium"
+                            />
+                        </div>
+                    )}
+                </div>
+
+                {/* Position */}
                 <div>
                     <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Position Applied For</label>
-                    <select
-                        name="position"
-                        required
-                        value={formData.position}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 text-sm font-medium"
-                    >
-                        <option value="">Select a Role</option>
-                        <option value="Digital Marketing Executive">Digital Marketing Executive</option>
-                        <option value="HR Recruiter">HR Recruiter</option>
-                        <option value="Placement Coordinator">Placement Coordinator</option>
-                        <option value="Business Development Executive">Business Development Executive</option>
-                        <option value="UI/UX Designer">UI/UX Designer</option>
-                        <option value="Python Developer">Python Developer</option>
-                        <option value="Other">Other</option>
-                    </select>
+                    {formData.isCustomPosition ? (
+                        <div className="flex gap-2">
+                            <input
+                                type="text"
+                                name="position"
+                                required
+                                value={formData.position}
+                                onChange={handleChange}
+                                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 text-sm font-medium"
+                                placeholder="Type your position..."
+                                autoFocus
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setFormData({ ...formData, isCustomPosition: false, position: '' })}
+                                className="px-3 py-2 bg-slate-200 hover:bg-slate-300 rounded-xl text-slate-600 font-bold text-xs"
+                            >
+                                Back
+                            </button>
+                        </div>
+                    ) : (
+                        <select
+                            name="position"
+                            required
+                            value={formData.position}
+                            onChange={(e) => {
+                                if (e.target.value === 'Other') {
+                                    setFormData({ ...formData, isCustomPosition: true, position: '' });
+                                } else {
+                                    handleChange(e);
+                                }
+                            }}
+                            className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 text-sm font-medium"
+                        >
+                            <option value="">Select a Role</option>
+                            <option value="Digital Marketing Executive">Digital Marketing Executive</option>
+                            <option value="HR Recruiter">HR Recruiter</option>
+                            <option value="Placement Coordinator">Placement Coordinator</option>
+                            <option value="Business Development Executive">Business Development Executive</option>
+                            <option value="UI/UX Designer">UI/UX Designer</option>
+                            <option value="Python Developer">Python Developer</option>
+                            <option value="Other">Other (Type Manually)</option>
+                        </select>
+                    )}
                 </div>
 
                 <div>

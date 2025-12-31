@@ -107,9 +107,7 @@ const HRInquiryModal = ({ isOpen, onClose, initialCategory = 'Job Seeker', initi
                         className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden max-h-[90vh] flex flex-col"
                     >
                         {/* Header */}
-                        <div className={`p-6 ${formData.category === 'Job Seeker' ? 'bg-blue-600' :
-                            formData.category === 'Company' ? 'bg-indigo-900' : 'bg-cyan-600'
-                            } text-white relative shrink-0`}>
+                        <div className="p-6 bg-indigo-900 text-white relative shrink-0">
                             <button
                                 onClick={onClose}
                                 className="absolute top-4 right-4 p-2 bg-white/20 hover:bg-white/30 rounded-full transition-colors"
@@ -280,9 +278,7 @@ const HRInquiryModal = ({ isOpen, onClose, initialCategory = 'Job Seeker', initi
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className={`w-full py-3.5 ${formData.category === 'Job Seeker' ? 'bg-gradient-to-r from-blue-600 to-indigo-600' :
-                                            formData.category === 'Company' ? 'bg-gradient-to-r from-slate-900 to-slate-700' : 'bg-gradient-to-r from-cyan-600 to-teal-600'
-                                            } text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:hover:scale-100`}
+                                        className="w-full py-3.5 bg-gradient-to-r from-slate-900 to-slate-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:hover:scale-100"
                                     >
                                         {isSubmitting ? (
                                             <>Processing... <Loader2 size={18} className="animate-spin" /></>

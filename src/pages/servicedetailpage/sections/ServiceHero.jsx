@@ -5,69 +5,60 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const ServiceHero = ({ service, id }) => {
     return (
-        <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-slate-900 text-white pt-28">
-
-            {/* Full Background Image Layer */}
-            <div className="absolute inset-0 z-0">
+        <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-slate-950 pt-20">
+            {/* Background Image & Overlays matching Tech/DM Hero style */}
+            <div className="absolute inset-0 z-0 bg-black">
                 <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover opacity-70 scale-105 animate-pulse-slow"
-                    style={{ animationDuration: '10s' }}
+                    className="w-full h-full object-cover md:object-contain object-right opacity-100"
+                    style={{
+                        maskImage: 'linear-gradient(to right, transparent 0%, black 80%)',
+                        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 80%)'
+                    }}
                 />
-                {/* Dark Gradients for Readability */}
-                <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 via-slate-900/40 to-slate-900" />
-                <div className="absolute inset-0 bg-gradient-to-r from-slate-900/50 via-transparent to-slate-900/50" />
-
-                {/* Grid Pattern Overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-[0.03]"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-transparent" />
             </div>
 
-            <div className="container mx-auto px-4 md:px-6 relative z-10 text-left max-w-5xl">
-                <Link to="/services" className="inline-flex items-center gap-2 text-slate-300 hover:text-white mb-8 transition-colors group backdrop-blur-md bg-white/5 py-2 px-4 rounded-full border border-white/10 hover:bg-white/10">
-                    <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" /> Back to All Services
-                </Link>
+            <div className="container mx-auto px-6 md:px-12 relative z-10 w-full">
+                <div className="max-w-4xl">
+                    <Link to="/services" className="inline-flex items-center gap-2 text-slate-400 hover:text-cyan-400 mb-8 transition-colors group text-sm font-medium tracking-wide">
+                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Back to Services
+                    </Link>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                >
-
-
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-snug tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 pb-2">
-                        {service.title}
-                    </h1>
-
-                    <p className="text-xl md:text-2xl text-slate-300 max-w-3xl leading-relaxed font-light mb-12">
-                        {service.subtitle}
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row items-center justify-start gap-6">
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={() => document.getElementById('details').scrollIntoView({ behavior: 'smooth' })}
-                            className="px-10 py-5 bg-white text-slate-900 font-bold rounded-2xl shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_-10px_rgba(255,255,255,0.5)] transition-all flex items-center gap-3"
-                        >
-                            Technology Stack <ArrowRight size={20} />
-                        </motion.button>
-                    </div>
-
-                    {/* Floating Status Cards (Decorative) */}
-                    <div className="absolute top-1/2 -right-20 hidden xl:block animate-float-slow">
-                        <div className="p-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl w-48 text-left">
-                            <div className="text-xs text-slate-400 mb-1">Architecture</div>
-                            <div className="text-sm font-mono text-emerald-400">Scalable & Secure</div>
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                            </span>
+                            Service Excellence
                         </div>
-                    </div>
-                    <div className="absolute top-2/3 right-10 hidden xl:block animate-float-slower">
-                        <div className="p-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl w-48 text-left">
-                            <div className="text-xs text-slate-400 mb-1">Availability</div>
-                            <div className="text-sm font-mono text-violet-400">99.9% Uptime</div>
+
+                        <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight leading-tight">
+                            {service.title}
+                        </h1>
+
+                        <p className="text-xl text-slate-400 leading-relaxed mb-10 max-w-2xl">
+                            {service.subtitle}
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row items-center justify-start gap-6">
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => document.getElementById('details').scrollIntoView({ behavior: 'smooth' })}
+                                className="px-8 py-4 rounded-full bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-blue-600 hover:to-indigo-500 text-white font-bold transition-all shadow-lg shadow-indigo-500/25 flex items-center gap-3"
+                            >
+                                Explore Details <ArrowRight size={20} />
+                            </motion.button>
                         </div>
-                    </div>
-                </motion.div>
+                    </motion.div>
+                </div>
             </div>
         </section>
     );

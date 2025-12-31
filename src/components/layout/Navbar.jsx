@@ -11,7 +11,7 @@ import {
     RiShareForwardFill, RiMailSendFill, RiAdvertisementFill, RiArticleFill,
     RiPresentationFill, RiTeamFill, RiChatSmileFill,
     RiUserAddFill, RiSearchFill, RiLayoutGridFill, RiMovieFill, RiBarChartGroupedFill,
-    RiTwitterXFill
+    RiTwitterXFill, RiUserSearchFill
 } from 'react-icons/ri';
 import { cn } from '../../lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -85,11 +85,11 @@ const Navbar = () => {
                 ]
             },
             {
-                title: 'Digital Marketing',
                 items: [
                     { name: 'Social Media Marketing', icon: RiShareForwardFill, path: '/dm-services#smm' },
                     { name: 'SEO', icon: RiSearchFill, path: '/dm-services#seo' },
-                    { name: 'Google & Social Ads', icon: RiAdvertisementFill, path: '/dm-services#ppc' },
+                    { name: 'Google Ads', icon: RiAdvertisementFill, path: '/dm-services#google-ads' },
+                    { name: 'Meta Ads', icon: Facebook, path: '/dm-services#meta-ads' },
                     { name: 'Content Marketing', icon: RiArticleFill, path: '/dm-services#content' },
                     { name: 'Email Marketing', icon: RiMailSendFill, path: '/dm-services#email' },
                     { name: 'Web Optimization', icon: RiLayoutGridFill, path: '/dm-services#web-optimization' },
@@ -100,13 +100,14 @@ const Navbar = () => {
             {
                 title: 'HR Services',
                 items: [
-                    { name: 'Recruitment & Talent', icon: RiUserStarFill, path: '/hr-services' },
-                    { name: 'Staffing Solutions', icon: RiTeamFill, path: '/hr-services' },
-                    { name: 'HR Consulting', icon: RiChatSmileFill, path: '/hr-services' },
-                    { name: 'Onboarding Support', icon: RiUserAddFill, path: '/hr-services' },
-                    { name: 'Payroll & Admin', icon: RiHandCoinFill, path: '/hr-services' },
-                    { name: 'Training & Skills', icon: RiPresentationFill, path: '/hr-services' },
-                    { name: 'Performance Mgmt', icon: RiBarChartGroupedFill, path: '/hr-services' },
+                    { name: 'Job Seeker Assistance', icon: RiUserSearchFill, path: '/hr-services#job-seeker' },
+                    { name: 'Resume Optimisation', icon: RiArticleFill, path: '/hr-services#resume-optimization' },
+                    { name: 'Interview Prep', icon: RiChatSmileFill, path: '/hr-services#interview-prep' },
+                    { name: 'Career Guidance', icon: RiArrowRightUpLine, path: '/hr-services#career-guidance' },
+                    { name: 'Fresher Hiring', icon: RiUserAddFill, path: '/hr-services#fresher-hiring' },
+                    { name: 'Campus Recruitment', icon: RiPresentationFill, path: '/hr-services#campus-recruitment' },
+                    { name: 'Contract-to-Hire', icon: RiBriefcase4Fill, path: '/hr-services#contract-hiring' },
+                    { name: 'Employee Engagement', icon: RiTeamFill, path: '/hr-services#employee-retention' },
                 ]
             }
         ]
@@ -136,11 +137,11 @@ const Navbar = () => {
             )}>
 
             {/* Navbar Content */}
-            <div className="relative z-[80] w-full px-6 md:px-12 flex flex-row justify-between items-center h-full max-w-[1440px] mx-auto">
+            <div className="relative z-[80] w-full px-2 md:px-4 flex flex-row justify-between items-center h-full">
 
                 {/* Logo */}
                 <Link to="/" className="flex items-center shrink-0 z-[90]">
-                    <img src={logo} alt="Infolexus" className="h-8 md:h-10 w-auto transition-all duration-300 object-contain object-left" />
+                    <img src={logo} alt="Infolexus" className="h-10 md:h-14 w-auto transition-all duration-300 object-contain object-left" />
                 </Link>
 
                 {/* Desktop Nav - Centered Absolute */}

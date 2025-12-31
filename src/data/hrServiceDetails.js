@@ -1,201 +1,204 @@
-import service1 from '../assets/hr-services/service-1.webp';
-import service2 from '../assets/hr-services/service-2.webp';
-import service3 from '../assets/hr-services/service-3.webp';
-import service4 from '../assets/hr-services/service-4.webp';
-import service5 from '../assets/hr-services/service-5.webp';
-import service6 from '../assets/hr-services/service-6.webp';
-import service7 from '../assets/hr-services/service-7.webp';
-import service8 from '../assets/hr-services/service-8.webp';
-import service9 from '../assets/hr-services/service-9.webp';
+
+// Importing images
+import staffImg from '../assets/hrservice/Staffing and solution.jpeg';
+import consultImg from '../assets/hrservice/hr consultating.jpeg';
+import jobSeekersImg from '../assets/hrservice/job seekers.jpeg';
+import onboardingImg from '../assets/hrservice/on boarding suport.jpeg';
+import payrollImg from '../assets/hrservice/payroll.jpeg';
+import performanceImg from '../assets/hrservice/perfomance.jpeg';
+import requirementsImg from '../assets/hrservice/requirements and talent.jpeg';
+import trainingImg from '../assets/hrservice/traning and skills.jpeg';
 
 export const hrServiceDetails = {
-    'hr-recruitment': {
-        title: "Recruitment & Staffing Solutions",
-        subtitle: "Expert Talent Acquisition for IT & Non-IT Sectors",
-        description: "We provide expert recruitment and staffing solutions for both IT and Non-IT sectors, helping businesses find the perfect talent to drive success. Our IT recruitment services cover a range of roles, from software development and cybersecurity to data science and IT project management. For Non-IT roles, we specialize in staffing across Sales, Marketing, Finance, HR, Operations, and Customer Service.",
+    // 1. Job Seeker Assistance
+    'job-seeker': {
+        title: "Job Seeker Assistance",
+        subtitle: "Connecting Talent with the Right Career Opportunities",
+        description: "At Infolexus, we provide comprehensive job placement services to support job seekers in finding roles that match their skills and aspirations. Our team specializes in both IT and Non-IT recruitment, working closely with candidates to identify their strengths. From initial screening to final placement, we offer dedicated employment assistance and guide you through the entire process to ensure you secure meaningful and long-term career opportunities.",
+        image: jobSeekersImg,
+        benefits: ["Personalized Job Matching", "Resume Guidance", "Interview Support"],
         features: [
-            "Executive Search & Headhunting",
-            "Contract & Permanent Staffing",
-            "RPO (Recruitment Process Outsourcing)",
-            "Background Verification Services",
-            "Technical Screening & Assessment",
-            "Onboarding Support"
+            "Comprehensive Job Placement",
+            "IT & Non-IT Recruitment",
+            "Skill & Aspiration Matching",
+            "Initial Screening Support",
+            "Final Placement Guidance",
+            "Long-term Career Support"
         ],
         process: [
-            { title: "Requirement", desc: "Understanding job roles and culture." },
-            { title: "Sourcing", desc: "Accessing premium talent pools." },
-            { title: "Screening", desc: " rigorous interviews and assessments." },
-            { title: "Selection", desc: "Finalizing the perfect candidate." }
-        ],
-        technologies: ["LinkedIn Recruiter", "Naukri", "Workday", "Zoho Recruit"],
-        image: service1
-    },
-    'hr-training': {
-        title: "Outbound & Training Programs",
-        subtitle: "Enhancing Workforce Capabilities",
-        description: "We offer leadership development, communication, soft skills, and team-building programs to enhance your workforce's capabilities. Our outbound training initiatives are designed to foster teamwork, improve interpersonal relationships, and boost overall organizational productivity.",
-        features: [
-            "Leadership Development Workshops",
-            "Communication Skills Training",
-            "Emotional Intelligence Seminars",
-            "Conflict Resolution Workshops",
-            "Productivity & Time Management",
-            "Customized Corporate Retreats"
-        ],
-        process: [
-            { title: "Analysis", desc: "Identifying skill gaps." },
-            { title: "Design", desc: "Creating custom modules." },
-            { title: "Delivery", desc: "Interactive training sessions." },
-            { title: "Feedback", desc: "Measuring impact and ROI." }
-        ],
-        technologies: ["LMS", "Zoom/Teams", "Gamification", "Assessments"],
-        image: service3
-    },
-    'hr-teambuilding': {
-        title: "Team Building & Engagement",
-        subtitle: "For a Motivated and Connected Workforce",
-        description: "Our customized team building activities and engagement drives are tailored to your company's culture. We create immersive experiences that motivate employees, strengthen bonds, and create a positive work environment.",
-        features: [
-            "Indoor & Outdoor Activities",
-            "Employee Recognition Programs",
-            "Wellness & Health Initiatives",
-            "Virtual Team Building",
-            "Cultural Events Management",
-            "Employee Surveys & Feedback"
-        ],
-        process: [
-            { title: "Consult", desc: "Understanding team dynamics." },
-            { title: "Plan", desc: "Curating engaging activities." },
-            { title: "Execute", desc: "Hosting the event." },
-            { title: "Sustain", desc: "Post-event engagement." }
-        ],
-        technologies: ["Event Apps", "SurveyMonkey", "Slack", "Trello"],
-        image: service2
-    },
-    'hr-drives': {
-        title: "Customized Drives",
-        subtitle: "Mass Hiring & Campus Recruitment Events",
-        description: "Tailored talent acquisition and employee engagement initiatives to fit your specific organizational culture and needs. We organize campus drives, walk-ins, and specialized hiring events to help you connect with large pools of qualified candidates efficiently.",
-        features: [
-            "Campus Recruitment Drives",
-            "Walk-in Interview Managment",
-            "Job Fairs & Career Expos",
-            "Virtual Hiring Events",
-            "Diversity Hiring Initiatives",
-            "Internship Program Management"
-        ],
-        process: [
-            { title: "schedule", desc: "Coordinating with colleges/venues." },
-            { title: "Promote", desc: "Attracting candidates." },
-            { title: "Conduct", desc: "Managing the event flow." },
-            { title: "Hire", desc: "Bulk offer rollouts." }
-        ],
-        technologies: ["HackerRank", "Mettl", "Zoom", "Google Forms"],
-        image: service4
-    },
-    'hr-marketing': {
-        title: "Digital Marketing & SEO",
-        subtitle: "Employer Branding & Visibility",
-        description: "Boost your brand visibility with our comprehensive digital marketing strategies and search engine optimization services. From content creation and social media management to technical SEO and paid advertising, we help you reach your target audience and grow your digital presence.",
-        features: [
-            "Employer Branding Campaigns",
-            "Social Media Management",
-            "SEO for Career Pages",
-            "Content Marketing",
-            "Lead Generation",
-            "PPC & Paid Ads"
-        ],
-        process: [
-            { title: "Audit", desc: "Analyzing online presence." },
-            { title: "Strategy", desc: "Defining channels and goals." },
-            { title: "Execute", desc: "Launching campaigns." },
-            { title: "Optimize", desc: "Refining for better reach." }
-        ],
-        technologies: ["Google Analytics", "SEMrush", "LinkedIn Ads", "HubSpot"],
-        image: service5
-    },
-    'hr-college-placements': {
-        title: "College Placements",
-        subtitle: "Bridging Students to Careers",
-        description: "We work closely with colleges to understand the specific needs of both students and companies, ensuring a seamless recruitment process. Through tailored placement programs, we help students kick-start their careers while enabling companies to access a pool of fresh, qualified talent.",
-        features: [
-            "Placement Cell Support",
-            "Company outreach",
-            "Interview Coordination",
-            "Offer Management",
-            "Pre-placement talks",
-            "Career Counseling"
-        ],
-        process: [
-            { title: "Connect", desc: "Partnering with corporates." },
-            { title: "Prepare", desc: "Grooming students." },
-            { title: "Interview", desc: "Facilitating hiring rounds." },
-            { title: "Place", desc: "Finalizing job offers." }
-        ],
-        technologies: ["Placement Software", "Database Mgmt", "Email Automation"],
-        image: service6
-    },
-    'hr-college-trainings': {
-        title: "College Trainings",
-        subtitle: "Industry-Ready Skill Development",
-        description: "Our training programs for colleges focus on bridging the industry-academia gap. We offer technical training in trending technologies like Python, Java, Data Science, and Full Stack Development. Additionally, our soft skills modules cover communication, resume building, interview preparation, and aptitude.",
-        features: [
-            "Technical Workshops (Full Stack, AI)",
-            "Soft Skills & Communication",
-            "Aptitude Test Preparation",
-            "Mock Interviews",
-            "Resume Building",
-            "Hackathons & Competitions"
-        ],
-        process: [
-            { title: "Assess", desc: "Student skill evaluation." },
-            { title: "Train", desc: "Intensive learning modules." },
-            { title: "Practice", desc: "Hands-on projects/mocks." },
-            { title: "Certify", desc: "Completion & readiness validation." }
-        ],
-        technologies: ["LMS", "Coding Platforms", "Virtual Labs"],
-        image: service7
-    },
-    'hr-job-placements': {
-        title: "Job Seeker Placements",
-        subtitle: "Your Gateway to Dream Opportunities",
-        description: "We specialize in connecting job seekers with the right career opportunities. whether you're looking for a fresh start or seeking to advance your career, our placement services are designed to match you with employers who align with your skills, experience, and career goals.",
-        features: [
-            "Profile Analysis & Matching",
-            "Resume Optimization",
-            "Direct Interview Scheduling",
-            "Career Guidance",
-            "Negotiation Support",
-            "Post-Placement Support"
-        ],
-        process: [
-            { title: "Register", desc: "Profile creation." },
+            { title: "Identify", desc: "Understanding candidate strengths." },
             { title: "Match", desc: "Finding suitable roles." },
-            { title: "Apply", desc: "Submitting applications." },
-            { title: "Succeed", desc: "Landing the job." }
+            { title: "Guide", desc: "Assistance through the process." },
+            { title: "Place", desc: "Securing the career opportunity." }
         ],
-        technologies: ["Job Portals", "ATS", "Networking"],
-        image: service8
+        technologies: ["Job Portals", "Recruitment Tools", "Skill Assessment"]
     },
-    'hr-skill-dev': {
-        title: "Skill Development Training",
-        subtitle: "Upskilling for Future Relevance",
-        description: "We offer comprehensive skill development training designed to empower individuals to thrive in a rapidly evolving job market. our training programs focus on both technical and soft skills, including leadership, communication, problem-solving, data analysis, programming, and more.",
+
+    // 2. Resume & Profile Optimisation
+    'resume-optimization': {
+        title: "Resume & Profile Optimisation",
+        subtitle: "Crafting Professional Profiles that Stand Out",
+        description: "We help candidates build a strong personal brand with our professional resume writing and LinkedIn profile makeover services. Our team creates ATS-friendly resumes that meet industry standards, ensuring your profile passes automated filters. By optimizing your CV for specific job roles and utilizing strategic keywords, we significantly improve your visibility and increase your chances of getting shortlisted by top recruiters.",
+        image: requirementsImg, // talent/requirements
+        benefits: ["ATS Compliance", "Professional Branding", "Increased Visibility"],
         features: [
-            "Certification Courses",
-            "Hands-on Bootcamps",
-            "Career Transition Programs",
-            "Language Proficiency",
-            "Digital Literacy",
-            "Professional Etiquette"
+            "Professional Resume Writing",
+            "LinkedIn Profile Makeover",
+            "ATS-Friendly Formats",
+            "Keyword Strategy",
+            "Role-Specific Optimization",
+            "Personal Branding"
         ],
         process: [
-            { title: "Enroll", desc: "Choosing the path." },
-            { title: "Learn", desc: "Expert-led sessions." },
-            { title: "Apply", desc: "Projects and tasks." },
-            { title: "Grow", desc: "Career advancement." }
+            { title: "Review", desc: "Analyzing current profile." },
+            { title: "Strategize", desc: "Selecting keywords and format." },
+            { title: "Draft", desc: "Creating professional content." },
+            { title: "Optimize", desc: "Refining for ATS and recruiters." }
         ],
-        technologies: ["Udemy", "Coursera", "Live Training"],
-        image: service9
+        technologies: ["ATS Checkers", "LinkedIn", "Document Design Tools"]
+    },
+
+    // 3. Interview Preparation & Coaching
+    'interview-prep': {
+        title: "Interview Preparation & Coaching",
+        subtitle: "Build Confidence and Master the Interview Process",
+        description: "Our interview coaching equips job seekers with the confidence needed to succeed. We provide rigorous mock interview practice and personalized feedback on how to handle technical and behavioral interview questions. Additionally, our soft skills training focuses on improving your communication and presentation, ensuring you are fully prepared to perform effectively in any real-world interview scenario.",
+        image: trainingImg, // training
+        benefits: ["Confidence Building", "Mock Sessions", "Expert Feedback"],
+        features: [
+            "Mock Interview Practice",
+            "Personalized Feedback",
+            "Technical Q&A Prep",
+            "Behavioral Coaching",
+            "Soft Skills Training",
+            "Presentation Skills"
+        ],
+        process: [
+            { title: "Assess", desc: "Evaluating readiness." },
+            { title: "Coach", desc: "Mock interviews and training." },
+            { title: "Feedback", desc: "Detailed improvement points." },
+            { title: "Refine", desc: "Polishing interview techniques." }
+        ],
+        technologies: ["Video Conferencing", "Recording Tools", "Feedback Forms"]
+    },
+
+    // 4. Career Guidance & Counselling
+    'career-guidance': {
+        title: "Career Guidance & Counselling",
+        subtitle: "Strategic Planning for Your Professional Journey",
+        description: "We offer expert career counselling services for students, freshers, and experienced professionals. Our advisors assist with career path planning and conduct a detailed skill gap analysis to identify areas for improvement. Whether you need job transition support or are looking to advance in your current field, we provide the clear, strategic guidance necessary to make informed professional decisions.",
+        image: consultImg, // consulting
+        benefits: ["Clear Career Path", "Skill Gap Analysis", "Expert Advice"],
+        features: [
+            "Expert Career Counselling",
+            "Career Path Planning",
+            "Skill Gap Analysis",
+            "Job Transition Support",
+            "Growth Strategy",
+            "Professional Decision Support"
+        ],
+        process: [
+            { title: "Analyze", desc: "Skill and goal assessment." },
+            { title: "Plan", desc: "Mapping the career path." },
+            { title: "Advise", desc: "Strategic guidance sessions." },
+            { title: "Support", desc: "Ongoing mentorship." }
+        ],
+        technologies: ["Career Assessments", "Market Analysis Tools", "Planning Frameworks"]
+    },
+
+    // 5. Fresher Hiring & Entry-Level Programs
+    'fresher-hiring': {
+        title: "Fresher Hiring & Entry-Level Programs",
+        subtitle: "Launching Careers with Structured Opportunities",
+        description: "Infolexus is dedicated to supporting graduates through exclusive fresher jobs and internship programs. We facilitate the campus-to-corporate transition by working with companies to create structured hiring processes. Our training-linked placement initiatives ensure that freshers gain valuable industry exposure and practical skills while meeting the specific talent needs of modern organizations.",
+        image: staffImg, // Staffing
+        benefits: ["Access to Exclusive Jobs", "Industry Exposure", "Structured Placement"],
+        features: [
+            "Exclusive Fresher Jobs",
+            "Internship Programs",
+            "Campus-to-Corporate Transition",
+            "Structured Hiring Processes",
+            "Training-Linked Placement",
+            "Industry Exposure"
+        ],
+        process: [
+            { title: "Connect", desc: "Linking graduates with companies." },
+            { title: "Train", desc: "Skill development programs." },
+            { title: "Intern", desc: "Practical industry experience." },
+            { title: "Hire", desc: "Placement in permanent roles." }
+        ],
+        technologies: ["Learning Management Systems", "Hiring Portals", "Assessment Tools"]
+    },
+
+    // 6. Campus Recruitment & Training Support
+    'campus-recruitment': {
+        title: "Campus Recruitment & Training Support",
+        subtitle: "Bridging the Gap Between Academia and Industry",
+        description: "We partner with colleges and universities to organize successful campus placement drives and recruitment activities. Our services extend to pre-placement training, where we focus on aptitude test preparation and soft skills development. This comprehensive approach enables educational institutions to improve their placement records while providing employers with a ready pool of trained, high-quality talent.",
+        image: onboardingImg, // Onboarding/Support
+        benefits: ["Improved Placement Records", "Student Readiness", "Efficient Drives"],
+        features: [
+            "Campus Placement Drives",
+            "Recruitment Activities",
+            "Pre-Placement Training",
+            "Aptitude Test Prep",
+            "Soft Skills Development",
+            "Placement Record Improvement"
+        ],
+        process: [
+            { title: "Organize", desc: "Setting up drives and events." },
+            { title: "Prepare", desc: "Training students for success." },
+            { title: "Conduct", desc: "Managing recruitment activities." },
+            { title: "Recruit", desc: "Facilitating hiring of talent." }
+        ],
+        technologies: ["Event Management Tools", "Aptitude Platforms", "Training Modules"]
+    },
+
+    // 7. Contract-to-Hire Solutions
+    'contract-hiring': {
+        title: "Contract-to-Hire Solutions",
+        subtitle: "Flexible Staffing with Long-Term Potential",
+        description: "Our contract-to-hire staffing model offers organizations flexible hiring solutions to onboard professionals for specific projects before offering permanent roles. This serves as an effective bridge, allowing businesses to assess candidate performance and cultural fit in real-time. It reduces hiring risks while providing candidates with a clear pathway from temporary staffing to long-term career growth.",
+        image: payrollImg, // Payroll/Contract
+        benefits: ["Flexible Staffing", "Performance Assessment", "Reduced Hiring Risks"],
+        features: [
+            "Flexible Hiring Solutions",
+            "Project-Based Onboarding",
+            "Real-Time Performance Assessment",
+            "Cultural Fit Evaluation",
+            "Reduced Hiring Risks",
+            "Temporary to Permanent Pathway"
+        ],
+        process: [
+            { title: "Onboard", desc: "Contractual hiring for projects." },
+            { title: "Assess", desc: "Evaluating performance on the job." },
+            { title: "Review", desc: "Determination of long-term fit." },
+            { title: "Convert", desc: "Offering permanent employment." }
+        ],
+        technologies: ["Contract Management", "Performance Tracking", "HR Systems"]
+    },
+
+    // 8. Employee Engagement & Retention Management
+    'employee-retention': {
+        title: "Employee Engagement & Retention Management",
+        subtitle: "Fostering a Productive and Committed Workforce",
+        description: "We help organizations build a stable workforce through proven employee retention strategies and workforce engagement initiatives. Our HR consulting services focus on performance evaluation systems and constructive feedback mechanisms. By enhancing overall workplace satisfaction and motivation, we support businesses in reducing attrition and maintaining a productive, committed team.",
+        image: performanceImg, // Performance
+        benefits: ["Lower Attrition", "Higher Engagement", "Better Performance"],
+        features: [
+            "Retention Strategies",
+            "Workforce Engagement",
+            "Performance Evaluation Systems",
+            "Feedback Mechanisms",
+            "Workplace Satisfaction",
+            "Attrition Reduction"
+        ],
+        process: [
+            { title: "Evaluate", desc: "Assessing current engagement." },
+            { title: "Plan", desc: "Designing retention strategies." },
+            { title: "Implement", desc: "Rolling out engagement initiatives." },
+            { title: "Sustain", desc: "Monitoring and adjusting for stability." }
+        ],
+        technologies: ["Engagement Surveys", "HR Analytics", "Feedback Tools"]
     }
 };

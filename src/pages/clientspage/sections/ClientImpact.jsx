@@ -10,7 +10,7 @@ const ClientImpact = () => {
     ];
 
     return (
-        <section className="py-20 bg-white border-y border-slate-100">
+        <section className="py-20 bg-[#081A4A]/5 border-y border-slate-100">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center">
                     {metrics.map((item, idx) => (

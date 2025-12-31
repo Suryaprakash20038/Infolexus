@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-const DMServiceSection = ({ title, subtitle, items, id, bgColor = "bg-white" }) => (
+const DMServiceSection = ({ title, subtitle, items, id, bgColor = "bg-white", isReversed = false }) => (
     <section id={id} className={`py-24 ${bgColor} overflow-hidden`}>
         <div className="container mx-auto px-6 md:px-12">
             <motion.div
@@ -17,55 +17,76 @@ const DMServiceSection = ({ title, subtitle, items, id, bgColor = "bg-white" }) 
             </motion.div>
 
             <div className="space-y-32">
-                {items.map((item, index) => (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 60 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-24`}
-                    >
-                        <div className="lg:w-1/2 w-full flex justify-center">
+                {items.map((item, index) => {
+                    // Determine direction based on isReversed prop and item index
+                    // If isReversed is true, start with reverse.
+                    // If multiple items exist, they will still alternate.
+                    const isRow = (index + (isReversed ? 1 : 0)) % 2 === 0;
+
+                    return (
+                        <motion.div
+                            key={index}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            className={`flex flex-col ${isRow ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 lg:gap-4`}
+                        >
+                            <div className="lg:w-1/2 w-full flex justify-center">
+                                <motion.div
+                                    className="relative w-full max-w-xl"
+                                    variants={{
+                                        hidden: { opacity: 0, x: isRow ? -100 : 100 },
+                                        visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } }
+                                    }}
+                                >
+                                    {/* Standardized 'Fixed Background' Look: Blended Image with Gradient Mask */}
+                                    <img
+                                        src={item.image}
+                                        alt={item.title}
+                                        className="w-full h-auto object-cover relative z-10"
+                                        style={{
+                                            maskImage: isRow
+                                                ? 'linear-gradient(to right, black 95%, transparent 100%)'
+                                                : 'linear-gradient(to left, black 95%, transparent 100%)',
+                                            WebkitMaskImage: isRow
+                                                ? 'linear-gradient(to right, black 95%, transparent 100%)'
+                                                : 'linear-gradient(to left, black 95%, transparent 100%)'
+                                        }}
+                                    />
+                                </motion.div>
+                            </div>
                             <motion.div
-                                whileHover={{ scale: 1.05 }}
-                                transition={{ type: "spring", stiffness: 300 }}
-                                className="relative"
+                                className="lg:w-1/2 w-full"
+                                variants={{
+                                    hidden: { opacity: 0, x: isRow ? 100 : -100 },
+                                    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut", delay: 0.2 } }
+                                }}
                             >
-                                {/* Decorative blob behind image */}
-                                <div className={`absolute -top-10 -left-10 w-full h-full ${index % 2 === 0 ? 'bg-blue-50' : 'bg-cyan-50'} rounded-full blur-3xl -z-10 opacity-70`}></div>
-                                <img
-                                    src={item.image}
-                                    alt={item.title}
-                                    className="w-full h-auto max-w-md md:max-w-lg object-contain relative z-10 rounded-xl shadow-lg"
-                                />
+                                <h3 className="text-3xl md:text-3xl font-bold text-slate-800 mb-4">{item.title}</h3>
+                                <p className="text-lg text-slate-600 leading-relaxed whitespace-pre-line text-justify mb-6">{item.description}</p>
+
+                                {/* Features List */}
+                                {item.features && (
+                                    <ul className="space-y-3 mb-8">
+                                        {item.features.slice(0, 5).map((feature, idx) => (
+                                            <li key={idx} className="flex items-start text-slate-700">
+                                                <span className="mr-3 text-blue-500 mt-1">✔</span>
+                                                {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+
+                                <Link
+                                    to={`/dm-services/${item.id}`}
+                                    className="inline-flex items-center text-white bg-blue-600 px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-colors uppercase tracking-wider text-sm group shadow-lg hover:shadow-blue-500/30"
+                                >
+                                    Explore Service <span className="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
+                                </Link>
                             </motion.div>
-                        </div>
-                        <div className="lg:w-1/2 w-full">
-                            <h3 className="text-3xl md:text-3xl font-bold text-slate-800 mb-4">{item.title}</h3>
-                            <p className="text-lg text-slate-600 leading-relaxed whitespace-pre-line text-justify mb-6">{item.description}</p>
-
-                            {/* Features List */}
-                            {item.features && (
-                                <ul className="space-y-3 mb-8">
-                                    {item.features.slice(0, 5).map((feature, idx) => (
-                                        <li key={idx} className="flex items-start text-slate-700">
-                                            <span className="mr-3 text-blue-500 mt-1">✔</span>
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-
-                            <Link
-                                to={`/dm-services/${item.id}`}
-                                className="inline-flex items-center text-white bg-blue-600 px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-colors uppercase tracking-wider text-sm group shadow-lg hover:shadow-blue-500/30"
-                            >
-                                Explore Service <span className="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
-                            </Link>
-                        </div>
-                    </motion.div>
-                ))}
+                        </motion.div>
+                    );
+                })}
             </div>
         </div>
     </section>

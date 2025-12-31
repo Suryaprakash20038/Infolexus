@@ -63,7 +63,7 @@ const ServiceInquiryForm = () => {
     };
 
     return (
-        <section className="py-20 bg-[#0F265C] text-white">
+        <section className="py-20 bg-[#081A4A] text-white">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-5xl font-black mb-4">Start Your Digital Transformation</h2>

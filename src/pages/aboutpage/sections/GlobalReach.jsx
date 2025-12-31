@@ -3,7 +3,7 @@ import { Globe } from 'lucide-react';
 
 const GlobalReach = () => {
     return (
-        <section className="py-24 bg-[#000B1F] text-white">
+        <section className="py-24 bg-[#081A4A] text-white">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col md:flex-row items-center gap-16">
                     <div className="w-full md:w-1/2">

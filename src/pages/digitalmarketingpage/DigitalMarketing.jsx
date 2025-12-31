@@ -51,6 +51,7 @@ const DigitalMarketing = () => {
                         features: service.features
                     }]}
                     bgColor={index % 2 === 0 ? 'bg-white' : 'bg-slate-50'}
+                    isReversed={index % 2 !== 0} // Zigzag: odd indices are reversed (Right-to-Left)
                 />
             ))}
         </div>

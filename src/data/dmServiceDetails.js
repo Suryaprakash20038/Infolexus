@@ -1,15 +1,18 @@
-import seoImg from '../assets/digitalmarketing1.jpeg'; // Placeholder, ideally use specific images
-import ppcImg from '../assets/digitalmarketing1.jpeg';
-import socialImg from '../assets/digitalmarketing1.jpeg';
-import contentImg from '../assets/digitalmarketing1.jpeg';
-import emailImg from '../assets/digitalmarketing1.jpeg';
-import analyticsImg from '../assets/digitalmarketing1.jpeg';
+import seoImg from '../assets/digital marketing/seo.jpeg';
+import googleAdsImg from '../assets/digital marketing/google ads.jpeg';
+import metaAdsImg from '../assets/digital marketing/meta ads .jpeg';
+import socialImg from '../assets/digital marketing/socialmedia.jpeg';
+import contentImg from '../assets/digital marketing/content marketing.jpeg';
+import emailImg from '../assets/digital marketing/emailmarketing.jpeg';
+import webOptImg from '../assets/digital marketing/weboptimazation.jpeg';
+import analyticsImg from '../assets/digital marketing/analatics.jpeg';
+import videoImg from '../assets/digital marketing/videoshooting .jpeg';
 
 export const dmServiceDetails = {
     'seo': {
         title: "Search Engine Optimization (SEO)",
-        subtitle: "Rank Higher, Drive Organic Traffic",
-        description: "SEO is the foundation of long-term digital success. We optimize your website's technical structure, on-page content, and off-page authority to ensure you rank for keywords that matter to your business.",
+        subtitle: "Rank Higher on Google and Drive Sustainable Organic Traffic.",
+        description: "Visibility is the key to online success. We go beyond basic keywords, performing deep technical audits and extensive research to understand your customers. By optimizing on-page content and building quality backlinks, we help you climb rankings and drive steady, organic traffic, reducing reliance on paid ads.",
         features: [
             "Comprehensive Website Audit",
             "Keyword Research & Strategy",
@@ -32,36 +35,62 @@ export const dmServiceDetails = {
         ],
         technologies: ["Google Analytics", "SEMrush", "WordPress", "Search Console"]
     },
-    'ppc': {
-        title: "Pay-Per-Click Advertising (PPC)",
-        subtitle: "Instant Visibility, Measurable ROI",
-        description: "Get immediate results with targeted ad campaigns. We manage Google Ads, Bing Ads, and display networks to put your brand in front of users who are actively searching for your products or services.",
+    'google-ads': {
+        title: "Google Ads (PPC)",
+        subtitle: "Capture High-Intent Leads When It Matters Most.",
+        description: "Be there exactly when customers are searching for you. We manage high-performance Google Ads campaigns that target users with high intent. By optimizing keywords and bidding strategies, we drive immediate traffic and lower your cost-per-acquisition, ensuring you get the most out of every ad spend.",
         features: [
-            "Campaign Setup & Strategy",
-            "Keyword Bidding & Management",
-            "Ad Copywriting & A/B Testing",
-            "Landing Page Optimization",
-            "Retargeting Campaigns",
-            "Detailed Performance Reporting"
+            "Search Network Campaigns",
+            "Display & Video Advertising",
+            "Shopping Ads for E-commerce",
+            "Keyword Research & Bidding",
+            "Negative Keyword Optimization",
+            "Conversion Tracking Setup"
         ],
-        image: ppcImg,
+        image: googleAdsImg,
         benefits: [
-            "Immediate traffic and lead generation",
-            "Precise audience targeting",
-            "Complete control over ad spend"
+            "Immediate visibility on search engines",
+            "Targets users ready to buy",
+            "Pay only for clicks, not impressions"
         ],
         process: [
-            { title: "Setup", desc: "Configuring accounts and tracking pixels." },
-            { title: "Launch", desc: "Going live with targeted ad groups." },
-            { title: "Monitor", desc: "Daily optimization of bids and keywords." },
-            { title: "Scale", desc: "Expanding profitable campaigns." }
+            { title: "Research", desc: "Identifying high-value keywords." },
+            { title: "Setup", desc: "Structuring ad groups and campaigns." },
+            { title: "Optimize", desc: "Refining bids and negative keywords." },
+            { title: "Scale", desc: "Increasing budget on winning ads." }
         ],
-        technologies: ["Google Ads", "Meta Ads", "Google Analytics", "Looker"]
+        technologies: ["Google Ads", "Google Analytics", "Looker", "Tag Manager"]
+    },
+    'meta-ads': {
+        title: "Meta Ads (Facebook & Instagram)",
+        subtitle: "Target Audiences with Precision and Visual Impact.",
+        description: "Reach your ideal customers where they spend their time. We specialize in visually engaging Meta Ads that target users based on demographics, interests, and behaviors. Through rigorous A/B testing of creatives, we build brand awareness and drive conversions on Facebook and Instagram.",
+        features: [
+            "Audience Segmentation & Targeting",
+            "Creative A/B Testing",
+            "Retargeting Campaigns",
+            "Instagram Reels & Story Ads",
+            "Catalog Sales & Dynamic Ads",
+            "Lead Gen Forms Integration"
+        ],
+        image: metaAdsImg,
+        benefits: [
+            "Highly visual brand storytelling",
+            "Precise demographic targeting",
+            "Effective for retargeting past visitors"
+        ],
+        process: [
+            { title: "Targeting", desc: "Defining ideal customer personas." },
+            { title: "Creative", desc: "Designing scroll-stopping visuals." },
+            { title: "Launch", desc: "Deploying campaigns across placements." },
+            { title: "Refine", desc: "Optimizing for highest ROAS." }
+        ],
+        technologies: ["Meta Ads", "Canva", "Pixel Helper", "CapCut"]
     },
     'smm': {
         title: "Social Media Marketing",
-        subtitle: "Engage Your Audience, Build Community",
-        description: "Social media is where your customers hang out. We help you build a strong presence on platforms like Facebook, Instagram, LinkedIn, and Twitter/X, creating content that sparks conversation and builds loyalty.",
+        subtitle: "Connect, Engage, and Grow Your Brand Audience.",
+        description: "Your social media presence is often your first impression. We build strategies tailored to your goals, from stunning graphics to engaging captions across all major platforms. By managing communities and fostering genuine connections, we turn casual followers into loyal brand advocates.",
         features: [
             "Social Media Strategy Development",
             "Content Calendar Creation & Publishing",
@@ -86,8 +115,8 @@ export const dmServiceDetails = {
     },
     'content': {
         title: "Content Marketing",
-        subtitle: "Tell Your Story, Educate Your Customers",
-        description: "Content is king. We create high-quality, valuable content that educates your audience, addresses their pain points, and establishes your brand as an industry thought leader.",
+        subtitle: "Valuable Content that Educates, Engages, and Converts.",
+        description: "Content is the strategic foundation of your digital identity. We create high-value blogs, articles, and copy that solve audience problems. consistently delivering quality information establishes your brand as a thought leader, builds trust, and supports SEO by guiding visitors naturally through the sales funnel.",
         features: [
             "Blog Post Writing & Management",
             "Whitepapers & E-books",
@@ -112,8 +141,8 @@ export const dmServiceDetails = {
     },
     'email': {
         title: "Email Marketing",
-        subtitle: "Nurture Leads, Drive Retention",
-        description: "Email remains one of the most effective marketing channels. We design personalized email campaigns and automated flows that keep your audience engaged and drive repeat business.",
+        subtitle: "Personalized Automation to Nurture Leads and Retain Customers.",
+        description: "Email remains the highest ROI channel. We replace generic blasts with segmented, personalized campaigns and automated flows. By analyzing engagement and refining strategies, we ensure your messages are read and acted upon, driving repeat business and customer loyalty.",
         features: [
             "List Building & Segmentation",
             "Newsletter Design & Creation",
@@ -138,8 +167,8 @@ export const dmServiceDetails = {
     },
     'web-optimization': {
         title: "Web Optimization",
-        subtitle: "Fast, Accessible, and User-Friendly",
-        description: "Your website is your digital storefront. We optimize it for speed, accessibility, and user experience to ensure you don't lose potential customers to slow loading times or poor navigation.",
+        subtitle: "Faster Performance for a Seamless and Superior User Experience.",
+        description: "A slow website drives customers away. We optimize your site's technical performance, ensuring lightning-fast load speeds. Beyond speed, we enhance User Experience (UX) and focus on Conversion Rate Optimization (CRO) to provide visitors a frictionless path to becoming paying customers.",
         features: [
             "Site Speed Optimization (Core Web Vitals)",
             "Mobile Responsiveness & UX Tuning",
@@ -148,7 +177,7 @@ export const dmServiceDetails = {
             "Caching & CDN Configuration",
             "Database Optimization"
         ],
-        image: seoImg, // Using seoImg as fallback
+        image: webOptImg,
         benefits: [
             "Lower bounce rates",
             "Better search engine rankings",
@@ -164,8 +193,8 @@ export const dmServiceDetails = {
     },
     'analytics': {
         title: "Analytics & Reporting",
-        subtitle: "Data-Backed Decisions for Maximum Growth",
-        description: "Don't fly blind. We set up robust analytics tracking and use conversion rate optimization (CRO) techniques to turn more of your visitors into paying customers.",
+        subtitle: "Actionable Insights and Transparent Data for Smarter Decisions.",
+        description: "Marketing without data is guessing. We set up advanced tracking with tools like GA4 to monitor every interaction. Instead of confusing numbers, we provide clear reports and actionable insights, allowing us to pivot strategies and ensure your budget is used effectively.",
         features: [
             "Google Analytics 4 (GA4) Setup",
             "Conversion Funnel Analysis",
@@ -190,8 +219,8 @@ export const dmServiceDetails = {
     },
     'video': {
         title: "Video Shoots & Editing",
-        subtitle: "Captivate Audience with Visual Storytelling",
-        description: "Video allows you to connect with your audience on an emotional level. We provide end-to-end video production services, from concept script to post-production editing, creating content that engages and converts.",
+        subtitle: "Dynamic Visual Storytelling for the Modern Digital Era.",
+        description: "Video is the only medium that consistently stops the scroll. We handle end-to-end production, from concept to editing. Our team uses professional equipment and sharp editing techniques to create visually compelling stories that evoke emotion and communicate your brand message clearly.",
         features: [
             "Concept Development & Scriptwriting",
             "Professional Video Shooting (4K)",
@@ -200,7 +229,7 @@ export const dmServiceDetails = {
             "Sound Design & Colour Grading",
             "Social Media Shorts & Reels"
         ],
-        image: contentImg, // Using contentImg as fallback
+        image: videoImg,
         benefits: [
             "Highest engagement rate of any media",
             "Complex ideas explained simply",
