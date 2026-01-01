@@ -123,135 +123,137 @@ const Navbar = () => {
     ];
 
     return (
-        <nav
-            style={
-                (scrolled || activeDropdown)
-                    ? { backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)" }
-                    : {}
-            }
-            className={cn(
-                "fixed w-full z-50 transition-all duration-300 border-b border-transparent",
-                (scrolled || activeDropdown)
-                    ? "bg-[#081A4A]/95 border-white/10 py-4 shadow-lg"
-                    : "bg-transparent py-5"
-            )}>
+        <>
+            <nav
+                style={
+                    (scrolled || activeDropdown)
+                        ? { backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)" }
+                        : {}
+                }
+                className={cn(
+                    "fixed w-full z-50 transition-all duration-300 border-b border-transparent",
+                    (scrolled || activeDropdown)
+                        ? "bg-[#081A4A]/95 border-white/10 py-4 shadow-lg"
+                        : "bg-transparent py-5"
+                )}>
 
-            {/* Navbar Content */}
-            <div className="relative z-[80] w-full px-2 md:px-4 flex flex-row justify-between items-center h-full">
+                {/* Navbar Content */}
+                <div className="relative z-[80] w-full px-2 md:px-4 flex flex-row justify-between items-center h-full">
 
-                {/* Logo */}
-                <Link to="/" className="flex items-center shrink-0 z-[90]">
-                    <img src={logo} alt="Infolexus" className="h-10 md:h-14 w-auto transition-all duration-300 object-contain object-left" />
-                </Link>
+                    {/* Logo */}
+                    <Link to="/" className="flex items-center shrink-0 z-[90]">
+                        <img src={logo} alt="Infolexus" className="h-10 md:h-14 w-auto transition-all duration-300 object-contain object-left" />
+                    </Link>
 
-                {/* Desktop Nav - Centered Absolute */}
-                <div className="hidden lg:flex items-center justify-center gap-8 lg:gap-10 absolute left-0 top-0 w-full h-full pointer-events-none">
-                    {navLinks.map((link) => (
-                        <div
-                            key={link.name}
-                            className="relative group pointer-events-auto"
-                            onMouseEnter={() => handleMouseEnter(link.name)}
-                            onMouseLeave={handleMouseLeave}
-                        >
-                            {link.isMega ? (
-                                <span
-                                    className={cn(
-                                        "flex items-center gap-1 text-[13px] lg:text-sm font-bold tracking-widest uppercase transition-colors duration-300 text-white hover:text-cyan-400 cursor-pointer",
-                                        (activeDropdown === link.name) && "text-cyan-400"
-                                    )}
-                                >
-                                    {link.name}
-                                    <ChevronDown size={14} className={cn("transition", activeDropdown === link.name ? "rotate-180" : "group-hover:rotate-180")} />
-                                </span>
-                            ) : (
-                                <Link
-                                    to={link.path}
-                                    className={cn(
-                                        "flex items-center gap-1 text-[13px] lg:text-sm font-bold tracking-widest uppercase transition-colors duration-300 text-white hover:text-cyan-400",
-                                        (location.pathname === link.path) && "text-cyan-400"
-                                    )}
-                                >
-                                    {link.name}
-                                </Link>
-                            )}
-
-                            {/* 🔥 FULL WIDTH MEGA MENU */}
-                            {link.isMega && (
-                                <div className={cn(
-                                    "fixed top-[70px] lg:top-[85px] left-[10px] right-[10px] transition-all duration-300 z-50",
-                                    activeDropdown === link.name
-                                        ? "opacity-100 translate-y-0 pointer-events-auto"
-                                        : "opacity-0 translate-y-2 pointer-events-none"
-                                )}
-                                    onMouseEnter={() => handleMouseEnter(link.name)}
-                                    onMouseLeave={handleMouseLeave}
-                                >
-                                    <div
-                                        style={{ backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)" }}
-                                        className="bg-[#081A4A]/95 border border-white/10 rounded-xl shadow-2xl p-6 space-y-6"
+                    {/* Desktop Nav - Centered Absolute */}
+                    <div className="hidden lg:flex items-center justify-center gap-8 lg:gap-10 absolute left-0 top-0 w-full h-full pointer-events-none">
+                        {navLinks.map((link) => (
+                            <div
+                                key={link.name}
+                                className="relative group pointer-events-auto"
+                                onMouseEnter={() => handleMouseEnter(link.name)}
+                                onMouseLeave={handleMouseLeave}
+                            >
+                                {link.isMega ? (
+                                    <span
+                                        className={cn(
+                                            "flex items-center gap-1 text-[13px] lg:text-sm font-bold tracking-widest uppercase transition-colors duration-300 text-white hover:text-cyan-400 cursor-pointer",
+                                            (activeDropdown === link.name) && "text-cyan-400"
+                                        )}
                                     >
-                                        <div className="grid grid-cols-3 gap-8">
-                                            {/* IT SERVICES */}
-                                            <div className="border-r border-white/10 pr-4">
-                                                <h3 className="text-cyan-400 font-extrabold uppercase flex items-center justify-center gap-2 text-base tracking-widest mb-6">
-                                                    <RiCodeBoxFill size={20} /> IT Services
-                                                </h3>
-                                                <div className="flex flex-wrap justify-center gap-4">
-                                                    {megaMenuData['OUR SERVICES'][0].items.map((item, i) => (
-                                                        <MegaMenuCard key={i} item={item} />
-                                                    ))}
-                                                </div>
-                                            </div>
+                                        {link.name}
+                                        <ChevronDown size={14} className={cn("transition", activeDropdown === link.name ? "rotate-180" : "group-hover:rotate-180")} />
+                                    </span>
+                                ) : (
+                                    <Link
+                                        to={link.path}
+                                        className={cn(
+                                            "flex items-center gap-1 text-[13px] lg:text-sm font-bold tracking-widest uppercase transition-colors duration-300 text-white hover:text-cyan-400",
+                                            (location.pathname === link.path) && "text-cyan-400"
+                                        )}
+                                    >
+                                        {link.name}
+                                    </Link>
+                                )}
 
-                                            {/* DIGITAL MARKETING */}
-                                            <div className="border-r border-white/10 px-4">
-                                                <h3 className="text-cyan-400 font-extrabold uppercase flex items-center justify-center gap-2 text-base tracking-widest mb-6">
-                                                    <RiMegaphoneFill size={20} /> Digital Marketing
-                                                </h3>
-                                                <div className="flex flex-wrap justify-center gap-4">
-                                                    {megaMenuData['OUR SERVICES'][1].items.map((item, i) => (
-                                                        <MegaMenuCard key={i} item={item} />
-                                                    ))}
+                                {/* 🔥 FULL WIDTH MEGA MENU */}
+                                {link.isMega && (
+                                    <div className={cn(
+                                        "fixed top-[70px] lg:top-[85px] left-[10px] right-[10px] transition-all duration-300 z-50",
+                                        activeDropdown === link.name
+                                            ? "opacity-100 translate-y-0 pointer-events-auto"
+                                            : "opacity-0 translate-y-2 pointer-events-none"
+                                    )}
+                                        onMouseEnter={() => handleMouseEnter(link.name)}
+                                        onMouseLeave={handleMouseLeave}
+                                    >
+                                        <div
+                                            style={{ backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)" }}
+                                            className="bg-[#081A4A]/95 border border-white/10 rounded-xl shadow-2xl p-6 space-y-6"
+                                        >
+                                            <div className="grid grid-cols-3 gap-8">
+                                                {/* IT SERVICES */}
+                                                <div className="border-r border-white/10 pr-4">
+                                                    <h3 className="text-cyan-400 font-extrabold uppercase flex items-center justify-center gap-2 text-base tracking-widest mb-6">
+                                                        <RiCodeBoxFill size={20} /> IT Services
+                                                    </h3>
+                                                    <div className="flex flex-wrap justify-center gap-4">
+                                                        {megaMenuData['OUR SERVICES'][0].items.map((item, i) => (
+                                                            <MegaMenuCard key={i} item={item} />
+                                                        ))}
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            {/* HR SERVICES */}
-                                            <div className="pl-4">
-                                                <h3 className="text-cyan-400 font-extrabold uppercase flex items-center justify-center gap-2 text-base tracking-widest mb-6">
-                                                    <RiUserStarFill size={20} /> HR Services
-                                                </h3>
-                                                <div className="flex flex-wrap justify-center gap-4">
-                                                    {megaMenuData['OUR SERVICES'][2].items.map((item, i) => (
-                                                        <MegaMenuCard key={i} item={item} />
-                                                    ))}
+                                                {/* DIGITAL MARKETING */}
+                                                <div className="border-r border-white/10 px-4">
+                                                    <h3 className="text-cyan-400 font-extrabold uppercase flex items-center justify-center gap-2 text-base tracking-widest mb-6">
+                                                        <RiMegaphoneFill size={20} /> Digital Marketing
+                                                    </h3>
+                                                    <div className="flex flex-wrap justify-center gap-4">
+                                                        {megaMenuData['OUR SERVICES'][1].items.map((item, i) => (
+                                                            <MegaMenuCard key={i} item={item} />
+                                                        ))}
+                                                    </div>
+                                                </div>
+
+                                                {/* HR SERVICES */}
+                                                <div className="pl-4">
+                                                    <h3 className="text-cyan-400 font-extrabold uppercase flex items-center justify-center gap-2 text-base tracking-widest mb-6">
+                                                        <RiUserStarFill size={20} /> HR Services
+                                                    </h3>
+                                                    <div className="flex flex-wrap justify-center gap-4">
+                                                        {megaMenuData['OUR SERVICES'][2].items.map((item, i) => (
+                                                            <MegaMenuCard key={i} item={item} />
+                                                        ))}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            )}
-                        </div>
-                    ))}
-                </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
 
-                {/* Right CTA */}
-                <div className="hidden lg:flex items-center gap-6">
-                    <SocialIcons />
-                    <Link to="/contact"
-                        className="px-6 py-2 border border-white rounded-full text-xs font-bold text-white hover:bg-white hover:text-black transition-all duration-300">
-                        CONTACT US
-                    </Link>
-                </div>
+                    {/* Right CTA */}
+                    <div className="hidden lg:flex items-center gap-6">
+                        <SocialIcons />
+                        <Link to="/contact"
+                            className="px-6 py-2 border border-white rounded-full text-xs font-bold text-white hover:bg-white hover:text-black transition-all duration-300">
+                            CONTACT US
+                        </Link>
+                    </div>
 
-                {/* Mobile Button - NOW INSIDE FLEX CONTAINER */}
-                <button
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="lg:hidden text-white p-2 rounded-full bg-white/10 backdrop-blur-md border border-white/10 shadow-lg hover:bg-white/20 transition-all"
-                    aria-label="Toggle Menu"
-                >
-                    {isOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
-            </div>
+                    {/* Mobile Button - NOW INSIDE FLEX CONTAINER */}
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="lg:hidden text-white p-2 rounded-full bg-white/10 backdrop-blur-md border border-white/10 shadow-lg hover:bg-white/20 transition-all"
+                        aria-label="Toggle Menu"
+                    >
+                        {isOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
+            </nav>
 
             {/* Mobile Menu Backdrop & Drawer */}
             <AnimatePresence>
@@ -369,7 +371,7 @@ const Navbar = () => {
                     </>
                 )}
             </AnimatePresence>
-        </nav >
+        </>
     );
 };
 

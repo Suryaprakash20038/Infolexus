@@ -155,7 +155,7 @@ const ProjectCard = ({ project, index }) => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-20%" }} // trigger later when more visible
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className={`flex flex - col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items - center gap - 12 lg: gap - 20 mb - 12 last: mb - 0`}
+            className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-20 mb-24 last:mb-0`}
         >
             {/* Visual Side */}
             <div className="w-full lg:w-1/2">
@@ -165,7 +165,7 @@ const ProjectCard = ({ project, index }) => {
             {/* Content Side */}
             <div className="w-full lg:w-1/2 text-left">
                 <div className="flex items-center gap-3 mb-6">
-                    <span className={`px - 3 py - 1 rounded - full text - [11px] font - bold uppercase tracking - widest ${project.bgAccent} ${project.accent} `}>
+                    <span className={`px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-widest ${project.bgAccent} ${project.accent}`}>
                         {project.category}
                     </span>
                     <div className="h-px bg-slate-200 flex-grow max-w-[100px]" />
