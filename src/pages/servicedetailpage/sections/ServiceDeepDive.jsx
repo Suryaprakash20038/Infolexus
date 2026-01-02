@@ -24,11 +24,15 @@ import {
     // DM Additions
     SiBuffer, SiHotjar, SiDiscord, SiFacebook, SiYoutube, SiTiktok,
     // HR Additions
-    SiLinkedin, SiZoom, SiSlack, SiTrello, SiAsana, SiCanva, SiSalesforce
+    SiLinkedin, SiZoom, SiSlack, SiTrello, SiAsana, SiCanva, SiSalesforce,
+    // New Additions
+    SiGoogledocs, SiGrammarly, SiZapier,
+    SiAdobephotoshop, SiAdobeillustrator, SiAdobepremierepro
 } from 'react-icons/si';
 import { FaAws, FaJava, FaWindows } from 'react-icons/fa';
 import { VscAzure } from 'react-icons/vsc';
 import { RiTwitterXFill } from 'react-icons/ri';
+import { Video } from 'lucide-react'; // Import Video icon for fallbacks
 
 const techMap = {
     // Mobile
@@ -77,6 +81,8 @@ const techMap = {
     "Protopie": { icon: SiMiro, color: "text-[#FF4A3D]" }, // Fallback/proxy
     "After Effects": { icon: SiMiro, color: "text-[#9999FF]" }, // Fallback
     "Miro": { icon: SiMiro, color: "text-[#050038]" },
+    "Photoshop": { icon: SiAdobephotoshop, color: "text-[#31A8FF]" },
+    "Illustrator": { icon: SiAdobeillustrator, color: "text-[#FF9A00]" },
 
     // Data
     "Tableau": { icon: SiTableau, color: "text-[#E97627]" },
@@ -107,7 +113,7 @@ const techMap = {
     "Active Directory": { icon: FaWindows, color: "text-[#0078D4]" },
     "Cisco": { icon: SiCisco, color: "text-[#1BA0D7]" },
     "Sophos": { icon: Shield, color: "text-[#0078D4]" }, // Lucide fallback
-    "Office 365": { icon: FaWindows, color: "text-[#EB3C00]" },
+    "Office 365": { icon: FaWindows, color: "text-[#D83B01]" },
 
     // Marketing
     "Google Analytics": { icon: SiGoogleanalytics, color: "text-[#E37400]" },
@@ -139,25 +145,31 @@ const techMap = {
     "Salesforce": { icon: SiSalesforce, color: "text-[#00A1E0]" },
 
     // DM Specific
-
     "Search Console": { icon: SiGoogleanalytics, color: "text-[#E37400]" },
     "Google Search Console": { icon: SiGoogleanalytics, color: "text-[#E37400]" },
     "Tag Manager": { icon: SiGoogleanalytics, color: "text-[#4285F4]" },
 
     "Pixel Helper": { icon: SiMeta, color: "text-[#0668E1]" },
+    "Meta Pixel": { icon: SiMeta, color: "text-[#0668E1]" },
+    "Meta Business Suite": { icon: SiMeta, color: "text-[#0668E1]" },
     "CapCut": { icon: SiTiktok, color: "text-[#000000]" },
     "Buffer": { icon: SiBuffer, color: "text-[#231F20]" },
     "Hootsuite": { icon: SiBuffer, color: "text-[#000000]" },
     "Later": { icon: SiBuffer, color: "text-[#000000]" },
+    "Sprout Social": { icon: SiBuffer, color: "text-[#2DCC70]" },
     "Hotjar": { icon: SiHotjar, color: "text-[#FD3A5C]" },
-    "Adobe Premiere": { icon: SiYoutube, color: "text-[#FF0000]" },
+    "Adobe Premiere": { icon: SiAdobepremierepro, color: "text-[#9999FF]" },
+    "Premiere Pro": { icon: SiAdobepremierepro, color: "text-[#9999FF]" },
 
     "DaVinci Resolve": { icon: SiYoutube, color: "text-[#000000]" },
+    "DaVinci": { icon: SiYoutube, color: "text-[#000000]" },
     "Cinema 4D": { icon: SiYoutube, color: "text-[#004BB0]" },
+    "Sony Alpha": { icon: Video, color: "text-[#000000]" },
     "Discord": { icon: SiDiscord, color: "text-[#5865F2]" },
     "Circle": { icon: SiDiscord, color: "text-[#5865F2]" },
     "Facebook Groups": { icon: SiFacebook, color: "text-[#1877F2]" },
     "Twitter Ads": { icon: RiTwitterXFill, color: "text-[#000000]" },
+    "X Ads": { icon: RiTwitterXFill, color: "text-[#000000]" },
     "Sales Navigator": { icon: SiLinkedin, color: "text-[#0A66C2]" },
     "Yoast SEO": { icon: SiSemrush, color: "text-[#A03593]" },
     "RankMath": { icon: SiSemrush, color: "text-[#F40056]" },
@@ -171,7 +183,15 @@ const techMap = {
     "ClickCease": { icon: SiGoogleads, color: "text-[#000000]" },
     "Bing Ads": { icon: SiGoogleads, color: "text-[#008080]" },
     "WhatsApp Business API": { icon: SiFacebook, color: "text-[#25D366]" },
-    "Twilio": { icon: SiFacebook, color: "text-[#F22F46]" }
+    "Twilio": { icon: SiFacebook, color: "text-[#F22F46]" },
+
+    // New Content & Automation Tools
+    "Google Docs": { icon: SiGoogledocs, color: "text-[#4285F4]" },
+    "Grammarly": { icon: SiGrammarly, color: "text-[#15C39A]" },
+    "Hemingway App": { icon: SiGoogledocs, color: "text-[#000000]" },
+    "Zapier": { icon: SiZapier, color: "text-[#FF4A00]" },
+    "Make": { icon: SiZapier, color: "text-[#6F3BF5]" },
+    "ActiveCampaign": { icon: SiHubspot, color: "text-[#004CFF]" }
 };
 
 const themes = {

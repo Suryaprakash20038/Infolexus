@@ -223,20 +223,20 @@ const Navbar = () => {
                     name: "Placement Support",
                     description: "Comprehensive guidance and preparation for job seekers and fresh graduates.",
                     items: [
-                        { name: 'Career Guidance', icon: RiArrowRightUpLine, path: '/hr-services/career-guidance', desc: 'Expert counseling to chart your professional path.' },
-                        { name: 'Resume Optimization', icon: RiArticleFill, path: '/hr-services/resume-optimization', desc: 'Crafting ATS-friendly resumes that stand out.' },
-                        { name: 'Interview Preparation', icon: RiChatSmileFill, path: '/hr-services/interview-prep', desc: 'Mock interviews and tips to crack the toughest rounds.' },
-                        { name: 'Job Search Assistance', icon: RiUserSearchFill, path: '/hr-services/job-seeker', desc: 'Connecting you with the right opportunities globally.' }
+                        { name: 'Career Guidance', icon: RiArrowRightUpLine, path: '/hr-services/placement-support#career-guidance', desc: 'Expert counseling to chart your professional path.' },
+                        { name: 'Resume Optimization', icon: RiArticleFill, path: '/hr-services/placement-support#resume-optimization', desc: 'Crafting ATS-friendly resumes that stand out.' },
+                        { name: 'Interview Preparation', icon: RiChatSmileFill, path: '/hr-services/placement-support#interview-prep', desc: 'Mock interviews and tips to crack the toughest rounds.' },
+                        { name: 'Job Search Assistance', icon: RiUserSearchFill, path: '/hr-services/placement-support#job-seeker', desc: 'Connecting you with the right opportunities globally.' }
                     ]
                 },
                 {
                     name: "Recruitment & Staffing",
                     description: "Tailored hiring solutions to build high-performance teams for your business.",
                     items: [
-                        { name: 'Permanent Recruitment', icon: RiBriefcase4Fill, path: '/hr-services/permanent-hiring', desc: 'Full-time talent acquisition for long-term success.' },
-                        { name: 'Contract & Contract-to-Hire', icon: RiHandCoinFill, path: '/hr-services/contract-hiring', desc: 'Flexible staffing for projects and interim needs.' },
-                        { name: 'In-House Developer Support', icon: RiCodeBoxFill, path: '/hr-services/in-house', desc: 'Dedicated developers integrated into your workflow.' },
-                        { name: 'IT & Non-IT Staffing', icon: RiTeamFill, path: '/hr-services/staffing', desc: 'Hiring across diverse roles and industries seamlessly.' }
+                        { name: 'Permanent Recruitment', icon: RiBriefcase4Fill, path: '/hr-services/recruitment-solutions#permanent-hiring', desc: 'Full-time talent acquisition for long-term success.' },
+                        { name: 'Contract & Contract-to-Hire', icon: RiHandCoinFill, path: '/hr-services/recruitment-solutions#contract-hiring', desc: 'Flexible staffing for projects and interim needs.' },
+                        { name: 'In-House Developer Support', icon: RiCodeBoxFill, path: '/hr-services/recruitment-solutions#in-house', desc: 'Dedicated developers integrated into your workflow.' },
+                        { name: 'IT & Non-IT Staffing', icon: RiTeamFill, path: '/hr-services/recruitment-solutions#staffing', desc: 'Hiring across diverse roles and industries seamlessly.' }
                     ]
                 }
             ]

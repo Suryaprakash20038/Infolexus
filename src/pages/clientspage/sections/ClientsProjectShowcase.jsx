@@ -5,7 +5,7 @@ import deplonoixImg from '../../../assets/DEPLONOIX.png';
 import dpImg from '../../../assets/DEPLONOIX.png';
 import botiqueImg from '../../../assets/botique.jpeg';
 import crmImg from '../../../assets/CRM LANDING.png';
-import mobileImg from '../../../assets/mobile 2.png';
+import mobileImg from '../../../assets/mobile1.jpeg';
 import hrImg from '../../../assets/HRM.png';
 
 const projects = [

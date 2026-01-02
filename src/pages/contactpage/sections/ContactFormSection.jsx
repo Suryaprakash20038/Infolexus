@@ -59,7 +59,7 @@ const ContactFormSection = () => {
                 throw new Error('Submission failed');
             }
         } catch (error) {
-            console.log('Failed to send email:', error);
+            // console.error('Failed to send email:', error);
             setSubmitStatus('error');
             setIsSubmitting(false);
         }

@@ -9,7 +9,7 @@ const Walkthrough = ({ onComplete }) => {
         const video = videoRef.current;
         if (video) {
             video.play().catch(error => {
-                console.log("Autoplay prevented:", error);
+                // console.warn("Autoplay prevented:", error);
                 // If autoplay is blocked, we might want to show a play button or just skip.
                 // For now, let's just skip if it fails (or user interaction is required).
                 // But usually, muted autoplay works.

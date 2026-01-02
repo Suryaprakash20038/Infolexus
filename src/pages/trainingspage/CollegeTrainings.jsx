@@ -134,7 +134,7 @@ const CollegeTrainings = () => {
                                         onClick={() => openModal(data.title)}
                                         className="inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-800 transition-colors group"
                                     >
-                                        Explore Curriculum
+                                       Enquiry Now
                                         <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                                     </button>
                                 </div>

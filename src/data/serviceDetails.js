@@ -6,7 +6,7 @@ import dataAnalyticsImg from '../assets/dataanalystic.jpeg';
 import digitalMarketingImg from '../assets/digitalmarketing1.jpeg';
 import aiMlImg from '../assets/Ai&ml.jpeg';
 import webDevImg from '../assets/webimage.jpeg';
-import cloudImg from '../assets/unnamed.jpg';
+import cloudImg from '../assets/abstract-background-of-digital-technologies-vector-56508182.avif';
 import testingImg from '../assets/testing_qa_v2.png';
 import itSupportImg from '../assets/it_support_247_v2.png';
 import cyberSecImg from '../assets/cyber_security_hero.png';

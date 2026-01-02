@@ -32,6 +32,20 @@ const testimonials = [
         content: "Infolexus nailed our video edits and social media posts. Very creative! Highly recommend",
         stars: 5,
         color: "#c026d3" // Fuchsia 600
+    },
+    {
+        name: "Guru Moorthi",
+        role: "Client",
+        content: "I've been working with Infolexus for the past few months and the results have been amazing, our website traffic jumped 45% and leads are coming in faster than ever. The team is professional, responsive, and truly knows digital marketing. My genuine review for them.",
+        stars: 5,
+        color: "#059669" // Emerald 600
+    },
+    {
+        name: "Aishwarya 01",
+        role: "Client",
+        content: "I contacted Infolexus, and I was really impressed by how fast they worked. They had me placed in just two days thnk you infolexus solution",
+        stars: 5,
+        color: "#ea580c" // Orange 600
     }
 ];
 
@@ -98,7 +112,7 @@ const Testimonials = () => {
                     <div className="w-full lg:w-7/12 p-8 md:p-16 flex flex-col justify-center relative bg-white">
 
                         {/* Quote Icon */}
-                        <div className="mb-6">
+                        <div className="mb-10">
                             <Quote size={48} className="opacity-30" style={{ color: currentTestimonial.color }} />
                         </div>
 
@@ -111,22 +125,22 @@ const Testimonials = () => {
                                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }} // Custom cubic bezier for smooth "premium" feel
                                 className="mb-12"
                             >
-                                <div className="min-h-[120px] flex items-center">
+                                <div className="min-h-[120px] flex items-center mb-10">
                                     <h3 className="text-lg md:text-2xl font-medium leading-relaxed text-slate-900">
                                         "{currentTestimonial.content}"
                                     </h3>
                                 </div>
 
-                                <div className="flex items-center gap-5">
+                                <div className="flex items-start gap-5">
                                     {/* Avatar Initial */}
                                     <div
-                                        className="w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold text-white shadow-md"
+                                        className="w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold text-white shadow-md shrink-0"
                                         style={{ backgroundColor: currentTestimonial.color }}
                                     >
                                         {currentTestimonial.name.charAt(0)}
                                     </div>
 
-                                    <div>
+                                    <div className="mt-3">
                                         <h4 className="text-xl font-bold text-slate-900">
                                             <DecryptedText
                                                 text={currentTestimonial.name}

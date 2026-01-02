@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const themes = {
     it: {
@@ -44,6 +44,27 @@ const themes = {
 
 const ServiceFeatures = ({ service, variant = 'it' }) => {
     const theme = themes[variant] || themes.it;
+    const [currentPage, setCurrentPage] = useState(1);
+
+    // Pagination Logic
+    const itemsPerPage = 4;
+    const shouldPaginate = variant === 'hr' && service.features && service.features.length > itemsPerPage;
+
+    // Calculate total pages
+    const totalPages = shouldPaginate ? Math.ceil(service.features.length / itemsPerPage) : 1;
+
+    // Get current items
+    const currentFeatures = shouldPaginate
+        ? service.features.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+        : service.features;
+
+    const handleNext = () => {
+        if (currentPage < totalPages) setCurrentPage(prev => prev + 1);
+    };
+
+    const handlePrev = () => {
+        if (currentPage > 1) setCurrentPage(prev => prev - 1);
+    };
 
     return (
         <div className="mb-32">
@@ -51,31 +72,60 @@ const ServiceFeatures = ({ service, variant = 'it' }) => {
                 <span className={`${theme.labelColor} font-bold tracking-widest uppercase text-xs mb-2 block`}>{theme.label}</span>
                 <h2 className={`text-4xl font-black ${theme.headingColor}`}>Core Features</h2>
             </div>
-            <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${variant === 'dm' ? 'gap-y-10' : ''}`}>
-                {service.features.map((feature, index) => (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                        className={`p-8 rounded-3xl border shadow-sm transition-all duration-300 group ${theme.cardClass}`}
-                    >
-                        {/* DM Overlay Effect */}
-                        {theme.overlay && (
-                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                        )}
 
-                        <div className={`w-12 h-12 flex items-center justify-center mb-6 transition-colors duration-300 backdrop-blur-sm ${theme.iconBox} ${variant === 'hr' ? 'rounded-full' : 'rounded-2xl'}`}>
-                            <CheckCircle2 size={24} />
-                        </div>
-                        <h3 className={`text-xl font-bold mb-2 transition-colors ${theme.titleClass}`}>{feature}</h3>
-                        <p className={`text-sm leading-relaxed transition-colors ${theme.descClass}`}>
-                            Designed to deliver exceptional value and tangible results for your business needs.
-                        </p>
-                    </motion.div>
-                ))}
+            <div className={`grid grid-cols-1 md:grid-cols-2 ${shouldPaginate ? 'lg:grid-cols-2 max-w-4xl mx-auto' : 'lg:grid-cols-3'} gap-6 ${variant === 'dm' ? 'gap-y-10' : ''}`}>
+                <AnimatePresence>
+                    {currentFeatures.map((feature, index) => (
+                        <motion.div
+                            key={`${currentPage}-${index}`}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            className={`p-8 rounded-3xl border shadow-sm transition-all duration-300 group ${theme.cardClass}`}
+                        >
+                            {/* DM Overlay Effect */}
+                            {theme.overlay && (
+                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                            )}
+
+                            <div className={`w-12 h-12 flex items-center justify-center mb-6 transition-colors duration-300 backdrop-blur-sm ${theme.iconBox} ${variant === 'hr' ? 'rounded-full' : 'rounded-2xl'}`}>
+                                <CheckCircle2 size={24} />
+                            </div>
+                            <h3 className={`text-xl font-bold mb-2 transition-colors ${theme.titleClass}`}>{feature}</h3>
+                            <p className={`text-sm leading-relaxed transition-colors ${theme.descClass}`}>
+                                Designed to deliver exceptional value and tangible results for your business needs.
+                            </p>
+                        </motion.div>
+                    ))}
+                </AnimatePresence>
             </div>
+
+            {/* Pagination Controls */}
+            {shouldPaginate && (
+                <div className="flex justify-center items-center gap-4 mt-12">
+                    <button
+                        onClick={handlePrev}
+                        disabled={currentPage === 1}
+                        className={`p-2 rounded-full border transition-all ${currentPage === 1 ? 'opacity-30 cursor-not-allowed border-slate-200' : 'hover:bg-emerald-50 border-emerald-200 text-emerald-600'}`}
+                    >
+                        <ChevronLeft size={24} />
+                    </button>
+
+                    <span className="text-sm font-bold text-slate-400 tracking-widest">
+                        PAGE {currentPage} / {totalPages}
+                    </span>
+
+                    <button
+                        onClick={handleNext}
+                        disabled={currentPage === totalPages}
+                        className={`p-2 rounded-full border transition-all ${currentPage === totalPages ? 'opacity-30 cursor-not-allowed border-slate-200' : 'hover:bg-emerald-50 border-emerald-200 text-emerald-600'}`}
+                    >
+                        <ChevronRight size={24} />
+                    </button>
+                </div>
+            )}
         </div>
     );
 };

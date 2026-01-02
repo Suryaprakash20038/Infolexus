@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import heroImg from '../../../assets/processed-image.png';
+import heroImg from '../../../assets/robotic-hands-full.jpg';
 
 const TechHero = () => {
     return (

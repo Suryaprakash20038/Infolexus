@@ -22,6 +22,8 @@ const DMServiceDetail = lazy(() => import('./pages/digitalmarketingpage/DMServic
 const TrainingServiceDetail = lazy(() => import('./pages/trainingspage/TrainingServiceDetail'));
 const CollegeTrainings = lazy(() => import('./pages/trainingspage/CollegeTrainings'));
 const GraduateTrainings = lazy(() => import('./pages/trainingspage/GraduateTrainings'));
+const PlacementSupport = lazy(() => import('./pages/hrservicespage/PlacementSupport'));
+const RecruitmentSolutions = lazy(() => import('./pages/hrservicespage/RecruitmentSolutions'));
 
 // Loading Fallback Component
 const PageLoader = () => (
@@ -49,6 +51,8 @@ function App() {
 
               <Route path="/services/:id" element={<ServiceDetail />} />
               <Route path="/hr-services" element={<HRServices />} />
+              <Route path="/hr-services/placement-support" element={<PlacementSupport />} />
+              <Route path="/hr-services/recruitment-solutions" element={<RecruitmentSolutions />} />
               <Route path="/hr-services/:id" element={<HRServiceDetail />} />
               <Route path="/dm-services" element={<DigitalMarketing />} />
               <Route path="/dm-services/:id" element={<DMServiceDetail />} />

@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Linkedin, Instagram, Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
 import { RiTwitterXFill } from 'react-icons/ri';
 import footerLogo from '../../assets/lnfolexus_4k_WALLPAPER_WITHOUT_CAPTION___1_-removebg-preview.png';
+import TermsModal from './TermsModal';
 
 const Footer = () => {
+    const [isTermsOpen, setIsTermsOpen] = useState(false);
+
     return (
         <footer className="bg-[#081A4A]/95 pt-20 pb-10 font-sans border-t border-slate-900 relative overflow-hidden">
             {/* Ambient Background Elements */}
@@ -24,26 +27,28 @@ const Footer = () => {
                                 className="h-10 md:h-14 w-auto object-contain object-left"
                             />
                         </Link>
-                        <p className="text-slate-400 leading-relaxed mb-8">
-                            Infolexus is a premier technology partner delivering innovative IT solutions and strategic workforce management to global enterprises.
-                        </p>
-                        <div className="flex gap-4">
-                            {[
-                                { icon: Linkedin, href: "https://www.linkedin.com/company/infolexus-solutions/" },
-                                { icon: RiTwitterXFill, href: "https://x.com/InfolexusOff" },
-                                { icon: Facebook, href: "https://www.facebook.com/share/1DZN16dGP2/?mibextid=wwXIfr" },
-                                { icon: Instagram, href: "https://www.instagram.com/infolexus_solutions?igsh=MWxmOXFpanBseTJ2bA%3D%3D&utm_source=qr" }
-                            ].map((social, idx) => (
-                                <a
-                                    key={idx}
-                                    href={social.href}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-600 transition-all duration-300"
-                                >
-                                    <social.icon size={18} />
-                                </a>
-                            ))}
+                        <div className="pl-3 md:pl-12">
+                            <p className="text-slate-400 leading-relaxed mb-8">
+                                Infolexus is a premier technology partner <br /> delivering innovative IT solutions and strategic workforce management to global enterprises.
+                            </p>
+                            <div className="flex gap-4">
+                                {[
+                                    { icon: Linkedin, href: "https://www.linkedin.com/company/infolexus-solutions/" },
+                                    { icon: RiTwitterXFill, href: "https://x.com/InfolexusOff" },
+                                    { icon: Facebook, href: "https://www.facebook.com/share/1DZN16dGP2/?mibextid=wwXIfr" },
+                                    { icon: Instagram, href: "https://www.instagram.com/infolexus_solutions?igsh=MWxmOXFpanBseTJ2bA%3D%3D&utm_source=qr" }
+                                ].map((social, idx) => (
+                                    <a
+                                        key={idx}
+                                        href={social.href}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-600 transition-all duration-300"
+                                    >
+                                        <social.icon size={18} />
+                                    </a>
+                                ))}
+                            </div>
                         </div>
                     </div>
 
@@ -61,8 +66,8 @@ const Footer = () => {
 
                     {/* Contact Column (Span 3) - Moved Left */}
                     <div className="lg:col-span-3">
-                        <h4 className="text-white font-bold mb-6">Contact Us</h4>
-                        <ul className="space-y-4 text-sm text-slate-400">
+                        <h4 className="text-white font-bold mb-5 text-center relative -left-[10px]">Contact Us</h4>
+                        <ul className="space-y-4 text-sm text-slate-400 mx-auto w-fit">
                             <li className="flex items-start gap-3">
                                 <MapPin size={18} className="text-blue-500 shrink-0 mt-1" />
                                 <span>Infolexus Solutions,<br />Coimbatore, Tamil Nadu, India</span>
@@ -84,8 +89,8 @@ const Footer = () => {
 
                     {/* Map Column (Span 3) - Added Right */}
                     <div className="lg:col-span-3">
-                        <h4 className="text-white font-bold mb-6">Location</h4>
-                        <div className="w-full h-48 rounded-xl overflow-hidden border border-slate-800 shadow-lg">
+                        <h4 className="text-white font-bold mb-6 text-center relative -left-[15px]">Location</h4>
+                        <div className="w-full h-48 rounded-xl overflow-hidden border border-slate-800 shadow-lg relative -left-[15px]">
                             <iframe
                                 title="Office Location"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.347263595567!2d76.9889976757065!3d11.006997092116035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba859eb03584a43%3A0x32befeb42d4f385a!2sInfolexus%20Solutions!5e0!3m2!1sen!2sin!4v1713437292323!5m2!1sen!2sin"
@@ -102,12 +107,17 @@ const Footer = () => {
                 <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 text-sm text-slate-500">
                     <p>&copy; {new Date().getFullYear()} Infolexus Solutions. All rights reserved.</p>
                     <div className="flex gap-6">
-                        <Link to="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-                        <Link to="#" className="hover:text-white transition-colors">Terms</Link>
-                        <Link to="#" className="hover:text-white transition-colors">Cookies</Link>
+                        <button
+                            onClick={() => setIsTermsOpen(true)}
+                            className="hover:text-white transition-colors cursor-pointer"
+                        >
+                            Terms of Service
+                        </button>
                     </div>
                 </div>
             </div>
+
+            <TermsModal isOpen={isTermsOpen} onClose={() => setIsTermsOpen(false)} />
         </footer>
     );
 };
