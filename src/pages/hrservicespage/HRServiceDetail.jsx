@@ -37,12 +37,12 @@ const HRServiceDetail = () => {
             <ServiceHero service={service} id={id} />
             <div id="details" className="pt-24 pb-32">
                 <div className="container mx-auto px-4 md:px-6">
-                    <ServiceDeepDive service={service} />
-                    <ServiceFeatures service={service} />
-                    <ServiceRoadmap service={service} />
+                    <ServiceDeepDive service={service} variant="hr" />
+                    <ServiceFeatures service={service} variant="hr" />
+                    <ServiceRoadmap service={service} variant="hr" />
                 </div>
             </div>
-            <ServiceCTA />
+            <ServiceCTA variant={['campus-recruitment'].includes(id) ? 'college' : ['job-seeker', 'resume-optimization', 'interview-prep', 'career-guidance', 'fresher-hiring'].includes(id) ? 'job-seeker' : 'default'} />
         </div>
     );
 };

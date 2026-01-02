@@ -40,9 +40,9 @@ const DMServiceDetail = () => {
             <div id="details" className="pt-24 pb-32">
                 <div className="container mx-auto px-4 md:px-6">
                     {/* Reuse standard Detail sections */}
-                    <ServiceDeepDive service={service} />
-                    <ServiceFeatures service={service} />
-                    <ServiceRoadmap service={service} />
+                    <ServiceDeepDive service={service} variant="dm" />
+                    <ServiceFeatures service={service} variant="dm" />
+                    <ServiceRoadmap service={service} variant="dm" />
                 </div>
             </div>
 

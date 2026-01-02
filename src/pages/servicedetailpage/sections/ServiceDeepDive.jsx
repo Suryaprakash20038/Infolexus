@@ -20,10 +20,15 @@ import {
     SiSelenium, SiCypress, SiJest, SiPostman, SiApachejmeter,
     SiJira, SiCisco,
     SiGoogleanalytics, SiSemrush, SiHubspot, SiMeta, SiGoogleads, SiMailchimp,
-    SiSplunk, SiWireshark, SiBurpsuite
+    SiSplunk, SiWireshark, SiBurpsuite,
+    // DM Additions
+    SiBuffer, SiHotjar, SiDiscord, SiFacebook, SiYoutube, SiTiktok,
+    // HR Additions
+    SiLinkedin, SiZoom, SiSlack, SiTrello, SiAsana, SiCanva, SiSalesforce
 } from 'react-icons/si';
 import { FaAws, FaJava, FaWindows } from 'react-icons/fa';
 import { VscAzure } from 'react-icons/vsc';
+import { RiTwitterXFill } from 'react-icons/ri';
 
 const techMap = {
     // Mobile
@@ -118,10 +123,95 @@ const techMap = {
     "Wireshark": { icon: SiWireshark, color: "text-[#1679A7]" },
     "Nessus": { icon: Shield, color: "text-[#0078D4]" }, // Using Shield as generic secure icon
     "Burp Suite": { icon: SiBurpsuite, color: "text-[#FF6633]" },
-    "AWS Security Hub": { icon: FaAws, color: "text-[#FF9900]" }
+    "AWS Security Hub": { icon: FaAws, color: "text-[#FF9900]" },
+
+    // HR Tech
+    "LinkedIn": { icon: SiLinkedin, color: "text-[#0A66C2]" },
+    "Zoom": { icon: SiZoom, color: "text-[#2D8CFF]" },
+    "Slack": { icon: SiSlack, color: "text-[#4A154B]" },
+    "Trello": { icon: SiTrello, color: "text-[#0052CC]" },
+    "Microsoft Teams": { icon: FaWindows, color: "text-[#6264A7]" },
+    "Asana": { icon: SiAsana, color: "text-[#F06A6A]" },
+    "Monday.com": { icon: SiTrello, color: "text-[#FF3D57]" },
+    "GitHub": { icon: SiGithub, color: "text-[#181717]" },
+    "Jira": { icon: SiJira, color: "text-[#0052CC]" },
+    "Canva": { icon: SiCanva, color: "text-[#00C4CC]" },
+    "Salesforce": { icon: SiSalesforce, color: "text-[#00A1E0]" },
+
+    // DM Specific
+
+    "Search Console": { icon: SiGoogleanalytics, color: "text-[#E37400]" },
+    "Google Search Console": { icon: SiGoogleanalytics, color: "text-[#E37400]" },
+    "Tag Manager": { icon: SiGoogleanalytics, color: "text-[#4285F4]" },
+
+    "Pixel Helper": { icon: SiMeta, color: "text-[#0668E1]" },
+    "CapCut": { icon: SiTiktok, color: "text-[#000000]" },
+    "Buffer": { icon: SiBuffer, color: "text-[#231F20]" },
+    "Hootsuite": { icon: SiBuffer, color: "text-[#000000]" },
+    "Later": { icon: SiBuffer, color: "text-[#000000]" },
+    "Hotjar": { icon: SiHotjar, color: "text-[#FD3A5C]" },
+    "Adobe Premiere": { icon: SiYoutube, color: "text-[#FF0000]" },
+
+    "DaVinci Resolve": { icon: SiYoutube, color: "text-[#000000]" },
+    "Cinema 4D": { icon: SiYoutube, color: "text-[#004BB0]" },
+    "Discord": { icon: SiDiscord, color: "text-[#5865F2]" },
+    "Circle": { icon: SiDiscord, color: "text-[#5865F2]" },
+    "Facebook Groups": { icon: SiFacebook, color: "text-[#1877F2]" },
+    "Twitter Ads": { icon: RiTwitterXFill, color: "text-[#000000]" },
+    "Sales Navigator": { icon: SiLinkedin, color: "text-[#0A66C2]" },
+    "Yoast SEO": { icon: SiSemrush, color: "text-[#A03593]" },
+    "RankMath": { icon: SiSemrush, color: "text-[#F40056]" },
+    "Ahrefs": { icon: SiSemrush, color: "text-[#0060FF]" },
+    "Moz": { icon: SiSemrush, color: "text-[#8A2432]" },
+    "BuzzSumo": { icon: SiSemrush, color: "text-[#000000]" },
+    "Screaming Frog": { icon: SiSemrush, color: "text-[#32CD32]" },
+    "PageSpeed Insights": { icon: SiGoogleanalytics, color: "text-[#4285F4]" },
+    "Lighthouse": { icon: SiGoogleanalytics, color: "text-[#F03C02]" },
+    "GTmetrix": { icon: SiGoogleanalytics, color: "text-[#005E98]" },
+    "ClickCease": { icon: SiGoogleads, color: "text-[#000000]" },
+    "Bing Ads": { icon: SiGoogleads, color: "text-[#008080]" },
+    "WhatsApp Business API": { icon: SiFacebook, color: "text-[#25D366]" },
+    "Twilio": { icon: SiFacebook, color: "text-[#F22F46]" }
 };
 
-const ServiceDeepDive = ({ service }) => {
+const themes = {
+    it: {
+        iconBg: "bg-violet-600",
+        valueTitle: "Business Value",
+        valueDot: "bg-violet-500",
+        checkColor: "text-violet-500",
+        stackTitle: "Technology Stack",
+        stackBorder: "border-slate-200"
+    },
+    dm: {
+        iconBg: "bg-gradient-to-r from-orange-500 to-pink-500",
+        valueTitle: "Growth Impact",
+        valueDot: "bg-orange-500",
+        checkColor: "text-orange-500",
+        stackTitle: "Tools & Platforms",
+        stackBorder: "border-orange-200"
+    },
+    hr: {
+        iconBg: "bg-emerald-600",
+        valueTitle: "People Advantage",
+        valueDot: "bg-emerald-500",
+        checkColor: "text-emerald-600",
+        stackTitle: "Key Competencies",
+        stackBorder: "border-emerald-200"
+    },
+    training: {
+        iconBg: "bg-blue-600",
+        valueTitle: "Career Impact",
+        valueDot: "bg-blue-500",
+        checkColor: "text-blue-600",
+        stackTitle: "Curriculum Focus",
+        stackBorder: "border-blue-200"
+    }
+};
+
+const ServiceDeepDive = ({ service, variant = 'it' }) => {
+    const theme = themes[variant] || themes.it;
+
     return (
         <div className="flex flex-col lg:flex-row gap-20 mb-32">
             <motion.div
@@ -131,7 +221,7 @@ const ServiceDeepDive = ({ service }) => {
                 className="lg:w-1/2"
             >
                 <h2 className="text-4xl font-black mb-8 text-slate-900 flex items-center gap-3">
-                    <span className="w-10 h-10 rounded-lg bg-violet-600 flex items-center justify-center text-white"><Cpu size={24} /></span>
+                    <span className={`w-10 h-10 rounded-lg flex items-center justify-center text-white ${theme.iconBg}`}><Cpu size={24} /></span>
                     Strategic Overview
                 </h2>
                 <p className="text-xl text-slate-600 leading-relaxed font-light mb-8">
@@ -139,20 +229,21 @@ const ServiceDeepDive = ({ service }) => {
                 </p>
                 <div className="p-6 bg-white rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/50">
                     <h4 className="font-bold text-slate-900 mb-4 border-b border-slate-100 pb-2 flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500"></span> Business Value
+                        <span className={`w-2 h-2 rounded-full ${theme.valueDot}`}></span> {theme.valueTitle}
                     </h4>
                     <ul className="space-y-3">
                         {service.benefits && service.benefits.map((benefit, idx) => (
                             <li key={idx} className="flex items-start gap-3 text-slate-600 text-sm font-medium">
-                                <CheckCircle2 size={16} className="text-emerald-500 mt-0.5 shrink-0" />
+                                <CheckCircle2 size={16} className={`${theme.checkColor} mt-0.5 shrink-0`} />
                                 {benefit}
                             </li>
                         ))}
+                        {/* Fallbacks if no benefits array */}
                         {!service.benefits && (
                             <>
-                                <li className="flex items-center gap-3 text-slate-600"><CheckCircle2 size={18} className="text-emerald-500" /> scalable architecture for future growth</li>
-                                <li className="flex items-center gap-3 text-slate-600"><CheckCircle2 size={18} className="text-emerald-500" /> Enhanced user engagement and retention</li>
-                                <li className="flex items-center gap-3 text-slate-600"><CheckCircle2 size={18} className="text-emerald-500" /> Streamlined operational efficiency</li>
+                                <li className="flex items-center gap-3 text-slate-600"><CheckCircle2 size={18} className={theme.checkColor} /> scalable architecture for future growth</li>
+                                <li className="flex items-center gap-3 text-slate-600"><CheckCircle2 size={18} className={theme.checkColor} /> Enhanced user engagement and retention</li>
+                                <li className="flex items-center gap-3 text-slate-600"><CheckCircle2 size={18} className={theme.checkColor} /> Streamlined operational efficiency</li>
                             </>
                         )}
                     </ul>
@@ -165,21 +256,26 @@ const ServiceDeepDive = ({ service }) => {
                 viewport={{ once: true }}
                 className="lg:w-1/2"
             >
-                <h3 className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-8 border-b border-slate-200 pb-2 inline-block">Technology Stack</h3>
+                <h3 className={`text-sm font-bold uppercase tracking-widest text-slate-400 mb-8 border-b pb-2 inline-block ${theme.stackBorder}`}>{theme.stackTitle}</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    {service.technologies.map((tech, index) => {
+                    {service.technologies && service.technologies.map((tech, index) => {
                         const techData = techMap[tech];
                         const Icon = techData ? techData.icon : null;
-                        const iconColor = techData ? techData.color : "text-slate-400";
+
+                        // Dynamic icon color adjustment could go here, but keeping default brand colors is usually better for logos.
+                        // However, we can style the box.
+                        const boxClass = variant === 'dm'
+                            ? "hover:border-orange-200 hover:shadow-orange-100"
+                            : variant === 'hr' ? "rounded-full aspect-square" : "rounded-xl";
 
                         return (
                             <motion.div
                                 key={index}
                                 whileHover={{ y: -3 }}
-                                className="flex flex-col items-center justify-center p-6 bg-white rounded-xl border border-slate-100 shadow-sm transition-all h-28 hover:shadow-md"
+                                className={`flex flex-col items-center justify-center p-6 bg-white border border-slate-100 shadow-sm transition-all hover:shadow-md ${boxClass} ${variant === 'hr' ? 'h-auto py-8' : 'h-28'}`}
                             >
                                 {Icon ? (
-                                    <Icon size={32} className={`mb-3 ${iconColor}`} />
+                                    <Icon size={32} className={`mb-3 ${techData.color || 'text-slate-600'}`} />
                                 ) : (
                                     <div className="w-8 h-8 rounded-full bg-slate-100 mb-3 flex items-center justify-center">
                                         <div className="w-2 h-2 rounded-full bg-slate-300" />
@@ -194,5 +290,4 @@ const ServiceDeepDive = ({ service }) => {
         </div>
     );
 };
-
 export default ServiceDeepDive;

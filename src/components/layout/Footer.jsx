@@ -11,8 +11,8 @@ const Footer = () => {
             <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none" />
             <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-indigo-900/10 rounded-full blur-[100px] translate-y-1/2 pointer-events-none" />
 
-            <div className="container mx-auto px-6 md:px-12 relative z-10">
-                
+            <div className="w-full px-2 md:px-4 relative z-10">
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
 
                     {/* Brand Column (Span 4) */}
@@ -21,7 +21,7 @@ const Footer = () => {
                             <img
                                 src={footerLogo}
                                 alt="Infolexus"
-                                className="h-20 w-auto brightness-200 object-contain object-left"
+                                className="h-10 md:h-14 w-auto object-contain object-left"
                             />
                         </Link>
                         <p className="text-slate-400 leading-relaxed mb-8">
@@ -67,10 +67,14 @@ const Footer = () => {
                                 <MapPin size={18} className="text-blue-500 shrink-0 mt-1" />
                                 <span>Infolexus Solutions,<br />Coimbatore, Tamil Nadu, India</span>
                             </li>
-                            <li className="flex items-center gap-3">
-                                <Mail size={18} className="text-blue-500 shrink-0" />
-                                <a href="mailto:info@infolexus.com" className="hover:text-white transition-colors">info@infolexus.com</a>
+                            <li className="flex items-start gap-3">
+                                <Mail size={18} className="text-blue-500 shrink-0 mt-1" />
+                                <div className="flex flex-col gap-1">
+                                    <a href="mailto:sales@infolexus.com" className="hover:text-white transition-colors">sales@infolexus.com</a>
+                                    <a href="mailto:support@infolexus.com" className="hover:text-white transition-colors">support@infolexus.com</a>
+                                </div>
                             </li>
+
                             <li className="flex items-center gap-3">
                                 <Phone size={18} className="text-blue-500 shrink-0" />
                                 <a href="tel:+919043919570" className="hover:text-white transition-colors">+91 90439 19570</a>
@@ -95,9 +99,9 @@ const Footer = () => {
 
                 </div>
 
-                <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
+                <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 text-sm text-slate-500">
                     <p>&copy; {new Date().getFullYear()} Infolexus Solutions. All rights reserved.</p>
-                    <div className="flex gap-6 mt-4 md:mt-0">
+                    <div className="flex gap-6">
                         <Link to="#" className="hover:text-white transition-colors">Privacy Policy</Link>
                         <Link to="#" className="hover:text-white transition-colors">Terms</Link>
                         <Link to="#" className="hover:text-white transition-colors">Cookies</Link>

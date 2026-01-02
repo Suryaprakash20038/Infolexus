@@ -1,47 +1,30 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import { serviceDetails } from '../../data/serviceDetails';
 
-// Specific Service Components
-import MobileAppDevelopment from './services/MobileAppDevelopment';
-import CustomWebApplication from './services/CustomWebApplication';
-import EnterpriseSolutions from './services/EnterpriseSolutions';
-import AIAndML from './services/AIAndML';
-import UIUXDesign from './services/UIUXDesign';
-import DataAnalytics from './services/DataAnalytics';
-import InfrastructureAndCloud from './services/InfrastructureAndCloud';
-import TestingAndQA from './services/TestingAndQA';
-import WebDevelopment from './services/WebDevelopment';
-import ITSupport from './services/ITSupport';
-import CyberSecurity from './services/CyberSecurity';
+// Import shared service components
+import ServiceHero from './sections/ServiceHero';
+import ServiceDeepDive from './sections/ServiceDeepDive';
+import ServiceFeatures from './sections/ServiceFeatures';
+import ServiceRoadmap from './sections/ServiceRoadmap';
+import ServiceCTA from './sections/ServiceCTA';
 
 const ServiceDetail = () => {
     const { id } = useParams();
+    const service = serviceDetails[id];
 
-    // Mapping of IDs to Components
-    const ServiceComponents = {
-        'ma-01': MobileAppDevelopment,
-        'cw-02': CustomWebApplication,
-        'es-03': EnterpriseSolutions,
-        'ai-04': AIAndML,
-        'ui-05': UIUXDesign,
-        'da-06': DataAnalytics,
-        'ic-07': InfrastructureAndCloud,
-        'qa-08': TestingAndQA,
-        'wd-09': WebDevelopment,
-        'it-10': ITSupport,
-        'security': CyberSecurity
-    };
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [id]);
 
-    const SpecificComponent = ServiceComponents[id];
-
-    if (!SpecificComponent) {
+    if (!service) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-slate-50">
                 <div className="text-center">
                     <h2 className="text-3xl font-bold text-slate-900 mb-4">Service Not Found</h2>
                     <p className="text-slate-500 mb-8">The requested service ID "{id}" does not exist.</p>
-                    <Link to="/services" className="text-violet-600 hover:underline flex items-center gap-2 justify-center">
+                    <Link to="/services" className="text-blue-600 hover:underline flex items-center gap-2 justify-center">
                         <ArrowLeft size={20} /> Back to Services
                     </Link>
                 </div>
@@ -49,7 +32,19 @@ const ServiceDetail = () => {
         );
     }
 
-    return <SpecificComponent />;
+    return (
+        <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-blue-200">
+            <ServiceHero service={service} id={id} />
+            <div id="details" className="pt-24 pb-32">
+                <div className="container mx-auto px-4 md:px-6">
+                    <ServiceDeepDive service={service} />
+                    <ServiceFeatures service={service} />
+                    <ServiceRoadmap service={service} />
+                </div>
+            </div>
+            <ServiceCTA />
+        </div>
+    );
 };
 
 export default ServiceDetail;

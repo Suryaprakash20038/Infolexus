@@ -50,7 +50,7 @@ const HRInquiryModal = ({ isOpen, onClose, initialCategory = 'Job Seeker', initi
         setIsSubmitting(true);
         setSubmitStatus(null);
 
-        const endpoint = "https://formsubmit.co/ajax/kumarsasi9081@gmail.com";
+        const endpoint = "https://formsubmit.co/ajax/support@infolexus.com";
 
         try {
             const response = await fetch(endpoint, {

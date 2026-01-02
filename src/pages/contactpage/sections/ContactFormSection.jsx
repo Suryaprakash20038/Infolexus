@@ -23,7 +23,7 @@ const ContactFormSection = () => {
         setSubmitStatus(null);
 
         // Using FormSubmit.co
-        const endpoint = "https://formsubmit.co/ajax/kumarsasi9081@gmail.com";
+        const endpoint = "https://formsubmit.co/ajax/support@infolexus.com";
 
         try {
             const response = await fetch(endpoint, {

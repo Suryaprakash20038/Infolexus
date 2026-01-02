@@ -2,11 +2,11 @@ import React from 'react';
 import ServiceCommitment from './ServiceCommitment';
 import ServiceInquiryForm from './ServiceInquiryForm';
 
-const ServiceCTA = () => {
+const ServiceCTA = ({ variant }) => {
     return (
         <>
             <ServiceCommitment />
-            <ServiceInquiryForm />
+            <ServiceInquiryForm variant={variant} />
         </>
     );
 };

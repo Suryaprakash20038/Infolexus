@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import hrHeroBg from '../../../assets/hr.jpeg';
 
-const HRHero = () => {
+const HRHero = ({ onEnquire }) => {
     return (
         <section className="relative w-full h-[85vh] min-h-[700px] flex items-center justify-center overflow-hidden">
             {/* Background Image & Overlay */}
@@ -37,7 +37,7 @@ const HRHero = () => {
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => document.getElementById('for-job-seekers-sec')?.scrollIntoView({ behavior: 'smooth' })}
+                        onClick={onEnquire}
                         className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-bold py-4 px-10 rounded-full shadow-lg shadow-blue-500/30 transition-all text-lg uppercase tracking-wide"
                     >
                         Find Your Dream Job

@@ -36,7 +36,7 @@ const ApplicationForm = () => {
         // Using FormSubmit.co for free, simulated unlimited emails
         // No API key required, just the destination email
         // We use the /ajax endpoint to keep the user on our page (no redirect)
-        const endpoint = "https://formsubmit.co/ajax/kumarsasi9081@gmail.com";
+        const endpoint = "https://formsubmit.co/ajax/support@infolexus.com";
 
         try {
             const response = await fetch(endpoint, {

@@ -6,44 +6,30 @@ import clientSuccessImg from '../../../assets/client-success.png'; // New genera
 
 const testimonials = [
     {
-        name: "Sanjai Rko",
-        role: "CES",
-        content: "Infolexus transformed our hiring process and built our core platform. Their dual expertise is unmatched.",
+        name: "Ranjith Vicky",
+        role: "Client",
+        content: "Very good services and trustable process recommended freshers and those who are looking job change even though hiring for client process. Giving more guidance to the candidate to get placed.",
         stars: 5,
         color: "#0284c7" // Sky 600
     },
     {
-        name: "Gva Mahadevan",
+        name: "Maheswari.M",
         role: "Client",
-        content: "Good service and very helpful team. I had a great experience and got placed successfully.",
+        content: "Got my website in hand on time. Kudos to the developer team!",
         stars: 5,
         color: "#7c3aed" // Violet 600
     },
     {
-        name: "Aishwarya",
+        name: "Sanjai Rko",
         role: "Client",
-        content: "I contacted Infolexus, and I was really impressed by how fast they worked. They had me placed in just two days.",
-        stars: 5,
-        color: "#dc2626" // Red 600
-    },
-    {
-        name: "Harsath Rahaman",
-        role: "Client",
-        content: "Infolexus Solutions is a good company providing diverse career opportunities and employee benefits.",
+        content: "Infolexus made the job search process so much easier. They were responsive, professional, and got me placed quickly. Highly recommend reaching out to them!",
         stars: 5,
         color: "#2563eb" // Blue 600
     },
     {
-        name: "Deepak J",
+        name: "vengad babu",
         role: "Client",
-        content: "I had a great experience with Infolexus. They were quick to respond and really worked hard to find the right job for me.",
-        stars: 5,
-        color: "#0891b2" // Cyan 600
-    },
-    {
-        name: "Elangovan Senthilkumar",
-        role: "Client",
-        content: "Big thanks to Infolexus for helping me find a job so fast! The team is super efficient.",
+        content: "Infolexus nailed our video edits and social media posts. Very creative! Highly recommend",
         stars: 5,
         color: "#c026d3" // Fuchsia 600
     }
@@ -125,9 +111,11 @@ const Testimonials = () => {
                                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }} // Custom cubic bezier for smooth "premium" feel
                                 className="mb-12"
                             >
-                                <h3 className="text-2xl md:text-4xl font-bold leading-normal mb-8 text-slate-900">
-                                    "{currentTestimonial.content}"
-                                </h3>
+                                <div className="min-h-[120px] flex items-center">
+                                    <h3 className="text-lg md:text-2xl font-medium leading-relaxed text-slate-900">
+                                        "{currentTestimonial.content}"
+                                    </h3>
+                                </div>
 
                                 <div className="flex items-center gap-5">
                                     {/* Avatar Initial */}

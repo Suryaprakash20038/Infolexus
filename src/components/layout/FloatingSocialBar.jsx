@@ -39,8 +39,7 @@ const FloatingSocialBar = () => {
     };
 
     const socialLinks = [
-        { icon: RiFacebookFill, href: 'https://www.facebook.com/share/1DZN16dGP2/?mibextid=wwXIfr', bg: 'bg-[#1877F2]' },
-        { icon: RiTwitterXFill, href: 'https://x.com/InfolexusOff', bg: 'bg-black' },
+        { icon: RiWhatsappLine, href: 'https://wa.me/919043919570', bg: 'bg-[#25D366]' },
         { icon: RiLinkedinFill, href: 'https://www.linkedin.com/company/infolexus-solutions/', bg: 'bg-[#0A66C2]' },
         { icon: RiInstagramFill, href: 'https://www.instagram.com/infolexus_solutions?igsh=MWxmOXFpanBseTJ2bA%3D%3D&utm_source=qr', bg: 'bg-[#E4405F]' },
         { icon: RiYoutubeFill, href: 'https://www.youtube.com/@Infolexus_solutions', bg: 'bg-[#FF0000]' },
@@ -81,14 +80,7 @@ const FloatingSocialBar = () => {
                                     <item.icon size={18} />
                                 </a>
                             ))}
-                            <a
-                                href="https://wa.me/919043919570"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center justify-center w-10 h-10 bg-[#25D366] text-white rounded-full shadow-lg hover:shadow-[#25D366]/40 hover:scale-110 transition-all duration-300"
-                            >
-                                <RiWhatsappLine size={20} />
-                            </a>
+
                         </motion.div>
                     )}
                 </AnimatePresence>
@@ -124,14 +116,7 @@ const FloatingSocialBar = () => {
                                 <item.icon size={18} />
                             </a>
                         ))}
-                        <a
-                            href="https://wa.me/919043919570"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center w-10 h-10 bg-[#25D366] text-white rounded-full shadow-lg hover:shadow-[#25D366]/40 hover:scale-110 transition-all duration-300"
-                        >
-                            <RiWhatsappLine size={20} />
-                        </a>
+
                     </motion.div>
                 )}
             </AnimatePresence>

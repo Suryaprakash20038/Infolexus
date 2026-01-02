@@ -23,7 +23,7 @@ const HRServices = () => {
 
     return (
         <div className="font-sans">
-            <HRHero />
+            <HRHero onEnquire={() => openModal('Job Seeker', { title: 'General Job Inquiry' })} />
 
             {services.map((service, index) => (
                 <HRServiceSection

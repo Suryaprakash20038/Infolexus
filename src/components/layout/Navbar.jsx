@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
-    Menu, X, ChevronDown, Instagram, Facebook
+    Menu, X, ChevronDown, Instagram, Facebook, Linkedin
 } from 'lucide-react';
 import {
     RiCodeBoxFill, RiSmartphoneFill, RiPaletteFill, RiCloudWindyFill,
@@ -11,7 +11,10 @@ import {
     RiShareForwardFill, RiMailSendFill, RiAdvertisementFill, RiArticleFill,
     RiPresentationFill, RiTeamFill, RiChatSmileFill,
     RiUserAddFill, RiSearchFill, RiLayoutGridFill, RiMovieFill, RiBarChartGroupedFill,
-    RiTwitterXFill, RiUserSearchFill
+    RiTwitterXFill, RiUserSearchFill,
+    RiCloudLine, RiRobotFill, RiChatSmile3Fill, RiShieldCheckFill,
+    RiServerFill, RiWindowFill, RiLinksFill, RiMoneyDollarCircleFill,
+    RiShoppingCartFill, RiSettings4Fill
 } from 'react-icons/ri';
 import { cn } from '../../lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -24,6 +27,8 @@ const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
     const [mobileSubMenuOpen, setMobileSubMenuOpen] = useState(false);
+    const [activeServiceCategory, setActiveServiceCategory] = useState(0);
+    const [activeSubService, setActiveSubService] = useState(0);
     const leaveTimeout = React.useRef(null);
     const location = useLocation();
 
@@ -53,6 +58,10 @@ const Navbar = () => {
     const handleMouseEnter = (name) => {
         if (leaveTimeout.current) clearTimeout(leaveTimeout.current);
         setActiveDropdown(name);
+        if (name === 'OUR SERVICES') {
+            setActiveServiceCategory(0);
+            setActiveSubService(0);
+        }
     };
 
     const handleMouseLeave = () => {
@@ -67,51 +76,200 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const megaMenuData = {
-        'OUR SERVICES': [
-            {
-                title: 'IT Services',
-                items: [
-                    { name: 'Web Development', icon: RiCodeBoxFill, path: '/services/wd-09' },
-                    { name: 'App Development', icon: RiSmartphoneFill, path: '/services/ma-01' },
-                    { name: 'UI/UX Design', icon: RiPaletteFill, path: '/services/ui-05' },
-                    { name: 'Cloud Solutions', icon: RiCloudWindyFill, path: '/services/ic-07' },
-                    { name: 'Cyber Security', icon: RiShieldKeyholeFill, path: '/services/security' },
-                    { name: 'AI & ML', icon: RiBrainFill, path: '/services/ai-04' },
-                    { name: 'Enterprise (ERP)', icon: RiBriefcase4Fill, path: '/services/es-03' },
-                    { name: 'Data Analytics', icon: RiBarChartBoxFill, path: '/services/da-06' },
-                    { name: 'Testing & QA', icon: RiCheckboxCircleFill, path: '/services/qa-08' },
-                    { name: 'IT Support', icon: RiCustomerService2Fill, path: '/services/it-10' },
-                ]
-            },
-            {
-                items: [
-                    { name: 'Social Media Marketing', icon: RiShareForwardFill, path: '/dm-services#smm' },
-                    { name: 'SEO', icon: RiSearchFill, path: '/dm-services#seo' },
-                    { name: 'Google Ads', icon: RiAdvertisementFill, path: '/dm-services#google-ads' },
-                    { name: 'Meta Ads', icon: Facebook, path: '/dm-services#meta-ads' },
-                    { name: 'Content Marketing', icon: RiArticleFill, path: '/dm-services#content' },
-                    { name: 'Email Marketing', icon: RiMailSendFill, path: '/dm-services#email' },
-                    { name: 'Web Optimization', icon: RiLayoutGridFill, path: '/dm-services#web-optimization' },
-                    { name: 'Analytics & Reporting', icon: RiLineChartFill, path: '/dm-services#analytics' },
-                    { name: 'Video Shoots & Editing', icon: RiMovieFill, path: '/dm-services#video' },
-                ]
-            },
-            {
-                title: 'HR Services',
-                items: [
-                    { name: 'Job Seeker Assistance', icon: RiUserSearchFill, path: '/hr-services#job-seeker' },
-                    { name: 'Resume Optimisation', icon: RiArticleFill, path: '/hr-services#resume-optimization' },
-                    { name: 'Interview Prep', icon: RiChatSmileFill, path: '/hr-services#interview-prep' },
-                    { name: 'Career Guidance', icon: RiArrowRightUpLine, path: '/hr-services#career-guidance' },
-                    { name: 'Fresher Hiring', icon: RiUserAddFill, path: '/hr-services#fresher-hiring' },
-                    { name: 'Campus Recruitment', icon: RiPresentationFill, path: '/hr-services#campus-recruitment' },
-                    { name: 'Contract-to-Hire', icon: RiBriefcase4Fill, path: '/hr-services#contract-hiring' },
-                    { name: 'Employee Engagement', icon: RiTeamFill, path: '/hr-services#employee-retention' },
-                ]
-            }
-        ]
-    };
+    const serviceCategories = [
+        {
+            title: 'IT Services',
+            description: 'Comprehensive technology solutions designed to scale your business and drive digital transformation.',
+            subCategories: [
+                {
+                    name: "Web Development",
+                    description: "Crafting responsive and dynamic websites for seamless user experiences.",
+                    items: [
+                        { name: 'Custom Website Development', icon: RiCodeBoxFill, path: '/services/wd-09', desc: 'Tailored websites built for performance and growth.' },
+                        { name: 'Ecommerce (Shopify/Woo)', icon: RiShoppingCartFill, path: '/services/ecommerce', desc: 'Scalable online stores driving sales and revenue.' },
+                        { name: 'UI/UX Design', icon: RiPaletteFill, path: '/services/ui-05', desc: 'User-centric designs that engage and convert.' },
+                        { name: 'CMS (WordPress/Framer/Drupal)', icon: RiLayoutGridFill, path: '/services/cms', desc: 'Easy content management for dynamic web updates.' }
+                    ]
+                },
+                {
+                    name: "App Development",
+                    description: "Innovating mobile solutions that engage users across diverse platforms.",
+                    items: [
+                        { name: 'Mobile App Development', icon: RiSmartphoneFill, path: '/services/ma-01', desc: 'Native and cross-platform apps for all devices.' },
+                        { name: 'Custom Web App', icon: RiWindowFill, path: '/services/web-app', desc: 'Powerful web apps streamlining business processes.' },
+                        { name: 'SaaS Development', icon: RiCloudWindyFill, path: '/services/saas', desc: 'Scalable software delivery models for modern business.' },
+                        { name: 'Accounting & Sales Automation', icon: RiMoneyDollarCircleFill, path: '/services/accounting-sales', desc: 'Automating financial and sales workflows.' }
+                    ]
+                },
+                {
+                    name: "Enterprise Solutions",
+                    description: "Streamlining business operations with robust software architectures.",
+                    items: [
+                        { name: 'ERP Solutions', icon: RiBarChartGroupedFill, path: '/services/erp', desc: 'Integrated systems managing core business processes efficiently.' },
+                        { name: 'CRM Systems', icon: RiUserStarFill, path: '/services/crm', desc: 'Enhancing customer relationships and driving sales growth.' },
+                        { name: 'HRM Systems', icon: RiTeamFill, path: '/services/hrm', desc: 'Managing talent and organizational success.' },
+                        { name: 'LMS Platforms', icon: RiArticleFill, path: '/services/lms', desc: 'Comprehensive learning and training management systems.' }
+                    ]
+                },
+                {
+                    name: "Testing & Cloud Solution",
+                    description: "Ensuring reliability and scalability through rigorous testing and cloud infrastructure.",
+                    items: [
+                        { name: 'Manual & Automation Testing', icon: RiCheckboxCircleFill, path: '/services/testing-automation', desc: 'Rigorous testing ensuring bug-free software delivery.' },
+                        { name: 'CI/CD & API Testing', icon: RiLinksFill, path: '/services/cicd-api', desc: 'Seamless integration and continuous deployment pipelines.' },
+                        { name: 'Hosting & Maintenance', icon: RiServerFill, path: '/services/hosting-maintenance', desc: 'Secure hosting and proactive system maintenance.' },
+                        { name: 'DevOps Services', icon: RiCloudLine, path: '/services/devops', desc: 'Optimizing development and operations collaboration.' },
+                        { name: 'Monitoring & Cloud', icon: RiShieldCheckFill, path: '/services/monitoring-cloud', desc: 'Real-time monitoring and scalable cloud solutions.' }
+                    ]
+                },
+                {
+                    name: "Data Analytics & AI/ML",
+                    description: "Leveraging data and intelligence to drive specific business insights.",
+                    items: [
+                        { name: 'NLP & AI Automation', icon: RiRobotFill, path: '/services/ai-automation', desc: 'Smart automation processing natural human language.' },
+                        { name: 'Predictive / Market Analytics', icon: RiLineChartFill, path: '/services/busi-intel', desc: 'Forecast trends and make data-driven decisions.' },
+                        { name: 'Business Intelligence (BI)', icon: RiBarChartBoxFill, path: '/services/bi', desc: 'Visualizing data to unlock actionable business insights.' },
+                        { name: 'Custom AI & Chatbots', icon: RiChatSmile3Fill, path: '/services/chatbots', desc: '24/7 automated support enhancing customer engagement.' },
+                    ]
+                },
+                {
+                    name: "Maintenance & IT Support",
+                    description: "Reliable 24/7 support to keep your digital assets running smoothly.",
+                    items: [
+                        { name: 'IT Support Services', icon: RiCustomerService2Fill, path: '/services/it-support', desc: 'Expert technical assistance whenever you need it.' },
+                        { name: 'Software Maintenance', icon: RiSettings4Fill, path: '/services/maintenance', desc: 'Regular updates and patches for optimal performance.' },
+                        { name: 'System Security & Updates', icon: RiShieldCheckFill, path: '/services/security-updates', desc: 'Proactive surveillance keeping systems secure.' }
+                    ]
+                }
+            ]
+        },
+        {
+            title: 'Digital Marketing',
+            description: 'Strategic digital marketing services to boost your brand visibility and maximize ROI.',
+            subCategories: [
+                {
+                    name: "SEO",
+                    expansion: "Search Engine Optimization",
+                    description: "Dominate search results with a complete organic strategy.",
+                    items: [
+                        { name: 'On-page SEO', icon: RiSearchFill, path: '/dm-services/on-page-seo', desc: 'Optimizing content and structure for better rankings.' },
+                        { name: 'Off-page SEO', icon: RiLinksFill, path: '/dm-services/off-page-seo', desc: 'Building authority with quality backlinks.' },
+                        { name: 'Technical SEO', icon: RiCodeBoxFill, path: '/dm-services/technical-seo', desc: 'Enhancing site health and crawlability.' }
+                    ]
+                },
+                {
+                    name: "SMM",
+                    expansion: "Social Media Marketing",
+                    description: "Engage your audience and build brand loyalty on social platforms.",
+                    items: [
+                        { name: 'Social Media Management', icon: RiShareForwardFill, path: '/dm-services/social-media-management', desc: 'Consistent posting and brand management.' },
+                        { name: 'Content Creation', icon: RiPaletteFill, path: '/dm-services/content-creation', desc: 'Designing visuals that stop the scroll.' },
+                        { name: 'Video Shoots & Edits', icon: RiMovieFill, path: '/dm-services/video-production', desc: 'Professional video production for higher engagement.' },
+                        { name: 'Community Engagement', icon: RiTeamFill, path: '/dm-services/community-engagement', desc: 'Building loyal communities around your brand.' }
+                    ]
+                },
+                {
+                    name: "PPC",
+                    expansion: "Pay Per Click",
+                    description: "Instant visibility and targeted traffic through paid advertising.",
+                    items: [
+                        { name: 'Performance Campaigns', icon: RiBarChartGroupedFill, path: '/dm-services/performance-campaigns', desc: 'Strategic campaigns focused on conversions.' },
+                        { name: 'Search Advertisements', icon: RiAdvertisementFill, path: '/dm-services/search-ads', desc: 'Capturing high-intent traffic on search engines.' },
+                        { name: 'Analytics & Optimization', icon: RiLineChartFill, path: '/dm-services/ppc-analytics', desc: 'Data-driven tuning for optimal performance.' }
+                    ]
+                },
+                {
+                    name: "Performance Marketing",
+                    description: "Data-driven advertising across multiple channels.",
+                    items: [
+                        { name: 'Google Ads', icon: RiAdvertisementFill, path: '/dm-services/google-ads', desc: 'Reach customers precisely when they search.' },
+                        { name: 'Meta Ads (FB/Insta)', icon: Facebook, path: '/dm-services/meta-ads', desc: 'Targeted visual ads on social networks.' },
+                        { name: 'LinkedIn/Twitter Ads', icon: RiTwitterXFill, path: '/dm-services/linkedin-twitter-ads', desc: 'B2B and professional network advertising.' }
+                    ]
+                },
+                {
+                    name: "Content Marketing",
+                    description: "Valuable content that educates and converts.",
+                    items: [
+                        { name: 'Blog & Article Writing', icon: RiArticleFill, path: '/dm-services/blog-writing', desc: 'SEO-driven articles to build thought leadership.' },
+                        { name: 'Video Marketing', icon: RiMovieFill, path: '/dm-services/video-marketing', desc: 'Engaging video content for all platforms.' },
+                        { name: 'Creative Writing', icon: RiPaletteFill, path: '/dm-services/creative-writing', desc: 'Compelling copy that defines your brand voice.' }
+                    ]
+                },
+                {
+                    name: "Reach Campaigns",
+                    description: "Direct outreach strategies to nurture leads.",
+                    items: [
+                        { name: 'Email Campaigns', icon: RiMailSendFill, path: '/dm-services/email-marketing', desc: 'Personalized email sequences that convert.' },
+                        { name: 'WhatsApp Campaigns', icon: RiChatSmile3Fill, path: '/dm-services/whatsapp-marketing', desc: 'Instant messaging for high open rates.' },
+                        { name: 'Automation', icon: RiRobotFill, path: '/dm-services/marketing-automation', desc: 'Streamlining communication workflows.' }
+                    ]
+                },
+                {
+                    name: "Analytics & Reporting",
+                    description: "Transparent insights into your marketing performance.",
+                    items: [
+                        { name: 'Performance Tracking', icon: RiLineChartFill, path: '/dm-services/performance-tracking', desc: 'Real-time monitoring of key metrics.' },
+                        { name: 'ROI Analysis', icon: RiMoneyDollarCircleFill, path: '/dm-services/roi-analysis', desc: 'Understanding the value of every dollar spent.' }
+                    ]
+                }
+            ]
+        },
+        {
+            title: 'HR Services',
+            description: 'End-to-end human resource management and recruitment solutions for your organization.',
+            subCategories: [
+                {
+                    name: "Placement Support",
+                    description: "Comprehensive guidance and preparation for job seekers and fresh graduates.",
+                    items: [
+                        { name: 'Career Guidance', icon: RiArrowRightUpLine, path: '/hr-services/career-guidance', desc: 'Expert counseling to chart your professional path.' },
+                        { name: 'Resume Optimization', icon: RiArticleFill, path: '/hr-services/resume-optimization', desc: 'Crafting ATS-friendly resumes that stand out.' },
+                        { name: 'Interview Preparation', icon: RiChatSmileFill, path: '/hr-services/interview-prep', desc: 'Mock interviews and tips to crack the toughest rounds.' },
+                        { name: 'Job Search Assistance', icon: RiUserSearchFill, path: '/hr-services/job-seeker', desc: 'Connecting you with the right opportunities globally.' }
+                    ]
+                },
+                {
+                    name: "Recruitment & Staffing",
+                    description: "Tailored hiring solutions to build high-performance teams for your business.",
+                    items: [
+                        { name: 'Permanent Recruitment', icon: RiBriefcase4Fill, path: '/hr-services/permanent-hiring', desc: 'Full-time talent acquisition for long-term success.' },
+                        { name: 'Contract & Contract-to-Hire', icon: RiHandCoinFill, path: '/hr-services/contract-hiring', desc: 'Flexible staffing for projects and interim needs.' },
+                        { name: 'In-House Developer Support', icon: RiCodeBoxFill, path: '/hr-services/in-house', desc: 'Dedicated developers integrated into your workflow.' },
+                        { name: 'IT & Non-IT Staffing', icon: RiTeamFill, path: '/hr-services/staffing', desc: 'Hiring across diverse roles and industries seamlessly.' }
+                    ]
+                }
+            ]
+        },
+        {
+            title: 'Trainings',
+            description: 'Comprehensive training solutions tailored for institutions and individual career growth.',
+            subCategories: [
+                {
+                    name: "For Colleges & Institutions",
+                    description: "Empowering students with industry-ready skills and campus placement support.",
+                    items: [
+                        { name: 'Industry-Oriented Technical Training', icon: RiCodeBoxFill, path: '/trainings/colleges#technical', desc: 'Hands-on coding and development workshops.' },
+                        { name: 'Placement Readiness Programs', icon: RiBriefcase4Fill, path: '/trainings/colleges#placement-readiness', desc: 'Preparing students for corporate expectations.' },
+                        { name: 'Soft Skills & Communication', icon: RiChatSmileFill, path: '/trainings/colleges#soft-skills', desc: 'Enhancing interpersonal and professional communication.' },
+                        { name: 'Aptitude & Logical Reasoning', icon: RiBrainFill, path: '/trainings/colleges#aptitude', desc: 'Sharpening problem-solving capabilities.' },
+                        { name: 'Pre-Placement Training', icon: RiUserStarFill, path: '/trainings/colleges#pre-placement', desc: 'Final polish before recruitment drives.' }
+                    ]
+                },
+                {
+                    name: "For Graduates & Job Seekers",
+                    description: "Upskilling programs to accelerate career growth and secure dream jobs.",
+                    items: [
+                        { name: 'Skill Upgrade Programs', icon: RiBarChartBoxFill, path: '/trainings/graduates#skill-upgrade', desc: 'Advanced courses in trending technologies.' },
+                        { name: 'Career Guidance & Mentorship', icon: RiTeamFill, path: '/trainings/graduates#career-guidance', desc: 'Personalized roadmaps from industry experts.' },
+                        { name: 'Resume & Interview Training', icon: RiArticleFill, path: '/trainings/graduates#resume-interview', desc: 'Crafting winning CVs and acing interviews.' },
+                        { name: 'Job-Oriented Courses', icon: RiBriefcase4Fill, path: '/trainings/graduates#job-oriented', desc: 'Specialized curriculums with guaranteed job support.' },
+                        { name: 'Placement-Linked Training', icon: RiHandCoinFill, path: '/trainings/graduates#placement-linked', desc: 'Training with assured placement opportunities.' }
+                    ]
+                }
+            ]
+        }
+    ];
 
     const navLinks = [
         { name: 'HOME', path: '/' },
@@ -156,6 +314,7 @@ const Navbar = () => {
                             >
                                 {link.isMega ? (
                                     <span
+                                        onClick={() => handleMouseEnter(link.name)}
                                         className={cn(
                                             "flex items-center gap-1 text-[13px] lg:text-sm font-bold tracking-widest uppercase transition-colors duration-300 text-white hover:text-cyan-400 cursor-pointer",
                                             (activeDropdown === link.name) && "text-cyan-400"
@@ -176,57 +335,135 @@ const Navbar = () => {
                                     </Link>
                                 )}
 
-                                {/* 🔥 FULL WIDTH MEGA MENU */}
+                                {/* 🔥 SIDEBAR MEGA MENU LAYOUT */}
                                 {link.isMega && (
                                     <div className={cn(
-                                        "fixed top-[70px] lg:top-[85px] left-[10px] right-[10px] transition-all duration-300 z-50",
-                                        activeDropdown === link.name
-                                            ? "opacity-100 translate-y-0 pointer-events-auto"
-                                            : "opacity-0 translate-y-2 pointer-events-none"
+                                        "fixed top-[70px] lg:top-[85px] left-0 right-0 w-full z-50 flex justify-center perspective-[2000px] pointer-events-none",
+                                        activeDropdown === link.name && "pointer-events-auto"
                                     )}
                                         onMouseEnter={() => handleMouseEnter(link.name)}
                                         onMouseLeave={handleMouseLeave}
                                     >
-                                        <div
-                                            style={{ backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)" }}
-                                            className="bg-[#081A4A]/95 border border-white/10 rounded-xl shadow-2xl p-6 space-y-6"
-                                        >
-                                            <div className="grid grid-cols-3 gap-8">
-                                                {/* IT SERVICES */}
-                                                <div className="border-r border-white/10 pr-4">
-                                                    <h3 className="text-cyan-400 font-extrabold uppercase flex items-center justify-center gap-2 text-base tracking-widest mb-6">
-                                                        <RiCodeBoxFill size={20} /> IT Services
-                                                    </h3>
-                                                    <div className="flex flex-wrap justify-center gap-4">
-                                                        {megaMenuData['OUR SERVICES'][0].items.map((item, i) => (
-                                                            <MegaMenuCard key={i} item={item} />
-                                                        ))}
-                                                    </div>
-                                                </div>
+                                        <div className={cn(
+                                            "w-[95%] max-w-6xl bg-[#081A4A]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col min-h-[500px] transition-all duration-300 origin-top transform",
+                                            activeDropdown === link.name
+                                                ? "opacity-100 rotate-x-0 translate-y-0"
+                                                : "opacity-0 -rotate-x-12 translate-y-4"
+                                        )}>
+                                            {/* 1. TOP TABS ROW */}
+                                            <div className="w-full bg-white border-b border-gray-100 flex flex-row">
+                                                {serviceCategories.map((cat, idx) => (
+                                                    <button
+                                                        key={idx}
+                                                        onMouseEnter={() => {
+                                                            setActiveServiceCategory(idx);
+                                                            setActiveSubService(0);
+                                                        }}
+                                                        className={cn(
+                                                            "flex-1 py-4 text-sm font-bold uppercase tracking-wider transition-all duration-300 relative group/btn",
+                                                            activeServiceCategory === idx
+                                                                ? "bg-[#081A4A] text-white"
+                                                                : "text-slate-600 hover:text-white hover:bg-[#081A4A]"
+                                                        )}
+                                                    >
+                                                        {activeServiceCategory === idx && (
+                                                            <motion.div
+                                                                layoutId="activeTab"
+                                                                className="absolute bottom-0 left-0 right-0 h-0.5 bg-cyan-400"
+                                                            />
+                                                        )}
+                                                        <span className="relative z-10">{cat.title}</span>
+                                                    </button>
+                                                ))}
+                                            </div>
 
-                                                {/* DIGITAL MARKETING */}
-                                                <div className="border-r border-white/10 px-4">
-                                                    <h3 className="text-cyan-400 font-extrabold uppercase flex items-center justify-center gap-2 text-base tracking-widest mb-6">
-                                                        <RiMegaphoneFill size={20} /> Digital Marketing
-                                                    </h3>
-                                                    <div className="flex flex-wrap justify-center gap-4">
-                                                        {megaMenuData['OUR SERVICES'][1].items.map((item, i) => (
-                                                            <MegaMenuCard key={i} item={item} />
-                                                        ))}
-                                                    </div>
-                                                </div>
+                                            {/* 2. CONTENT AREA */}
+                                            <div className="w-full h-full flex-1 relative bg-[#081A4A]/60 backdrop-blur-xl">
+                                                {/* Decorative background */}
+                                                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
 
-                                                {/* HR SERVICES */}
-                                                <div className="pl-4">
-                                                    <h3 className="text-cyan-400 font-extrabold uppercase flex items-center justify-center gap-2 text-base tracking-widest mb-6">
-                                                        <RiUserStarFill size={20} /> HR Services
-                                                    </h3>
-                                                    <div className="flex flex-wrap justify-center gap-4">
-                                                        {megaMenuData['OUR SERVICES'][2].items.map((item, i) => (
-                                                            <MegaMenuCard key={i} item={item} />
-                                                        ))}
-                                                    </div>
-                                                </div>
+                                                {/* Dynamic Content */}
+                                                <AnimatePresence mode="wait">
+                                                    <motion.div
+                                                        key={activeServiceCategory}
+                                                        initial={{ opacity: 0, y: 10 }}
+                                                        animate={{ opacity: 1, y: 0 }}
+                                                        exit={{ opacity: 0, y: 10 }}
+                                                        transition={{ duration: 0.2 }}
+                                                        className="h-full flex flex-col p-8"
+                                                    >
+                                                        {/* Nested Sidebar Layout for IT Services */}
+                                                        {serviceCategories[activeServiceCategory].subCategories ? (
+                                                            <div className="flex h-full gap-8">
+                                                                {/* Level 3: Inner Sidebar */}
+                                                                <div className="w-1/4 flex flex-col gap-2 border-r border-white/10 pr-4">
+                                                                    {serviceCategories[activeServiceCategory].subCategories.map((sub, idx) => (
+                                                                        <button
+                                                                            key={idx}
+                                                                            onMouseEnter={() => setActiveSubService(idx)}
+                                                                            className={cn(
+                                                                                "text-left px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 flex items-center justify-between group/sub",
+                                                                                activeSubService === idx
+                                                                                    ? "bg-cyan-500 text-black shadow-lg font-bold scale-105"
+                                                                                    : "text-slate-300 hover:text-white hover:bg-white/10"
+                                                                            )}
+                                                                        >
+                                                                            <span>
+                                                                                {sub.name}
+                                                                                {sub.expansion && (
+                                                                                    <span className="text-[10px] font-normal opacity-75 ml-1">
+                                                                                        ({sub.expansion})
+                                                                                    </span>
+                                                                                )}
+                                                                            </span>
+                                                                            {activeSubService === idx && (
+                                                                                <motion.div layoutId="subArrow">
+                                                                                    <RiArrowRightUpLine size={16} className="text-black" />
+                                                                                </motion.div>
+                                                                            )}
+                                                                        </button>
+                                                                    ))}
+                                                                </div>
+
+                                                                {/* Level 4: Grid */}
+                                                                <div className="w-3/4 flex flex-col">
+                                                                    <div className="mb-6">
+                                                                        <h4 className="text-xl font-bold text-white mb-2">
+                                                                            {serviceCategories[activeServiceCategory].subCategories[activeSubService].name}
+                                                                        </h4>
+                                                                        <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
+                                                                            {serviceCategories[activeServiceCategory].subCategories[activeSubService].description}
+                                                                        </p>
+                                                                    </div>
+                                                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-min">
+                                                                        {serviceCategories[activeServiceCategory].subCategories[activeSubService].items.map((item, i) => (
+                                                                            <MegaMenuCard key={i} item={item} />
+                                                                        ))}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        ) : (
+                                                            /* Standard Grid Layout */
+                                                            <>
+                                                                <div className="mb-8">
+                                                                    <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
+                                                                        {serviceCategories[activeServiceCategory].title}
+                                                                        <span className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent ml-4" />
+                                                                    </h3>
+                                                                    <p className="text-slate-400 max-w-2xl text-sm leading-relaxed">
+                                                                        {serviceCategories[activeServiceCategory].description}
+                                                                    </p>
+                                                                </div>
+
+                                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-min">
+                                                                    {serviceCategories[activeServiceCategory].items.map((item, i) => (
+                                                                        <MegaMenuCard key={i} item={item} />
+                                                                    ))}
+                                                                </div>
+                                                            </>
+                                                        )}
+                                                    </motion.div>
+                                                </AnimatePresence>
                                             </div>
                                         </div>
                                     </div>
@@ -317,23 +554,52 @@ const Navbar = () => {
                                                             className="overflow-hidden"
                                                         >
                                                             <div className="pl-4 py-2 space-y-4">
-                                                                {megaMenuData['OUR SERVICES'].map((category, idx) => (
-                                                                    <div key={idx} className="space-y-2">
-                                                                        <h4 className="text-cyan-500 font-bold text-[10px] uppercase tracking-widest mb-1 opacity-80">
+                                                                {serviceCategories.map((category, idx) => (
+                                                                    <div key={idx} className="space-y-4">
+                                                                        <h4 className="text-cyan-500 font-bold text-[10px] uppercase tracking-widest opacity-80 flex items-center gap-2">
+                                                                            <span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
                                                                             {category.title}
                                                                         </h4>
-                                                                        <div className="flex flex-col gap-1 border-l border-white/10 pl-3">
-                                                                            {category.items.map((item, itemIdx) => (
-                                                                                <Link
-                                                                                    key={itemIdx}
-                                                                                    to={item.path}
-                                                                                    onClick={() => setIsOpen(false)}
-                                                                                    className="text-slate-300 hover:text-white text-xs font-medium py-1 transition-colors block"
-                                                                                >
-                                                                                    {item.name}
-                                                                                </Link>
-                                                                            ))}
-                                                                        </div>
+
+                                                                        {/* Handle Subcategories (IT, DM, HR) vs Direct Items (Trainings) */}
+                                                                        {category.subCategories ? (
+                                                                            <div className="flex flex-col gap-3 pl-2 border-l border-white/10">
+                                                                                {category.subCategories.map((sub, subIdx) => (
+                                                                                    <div key={subIdx} className="space-y-2">
+                                                                                        <h5 className="text-white text-[11px] font-bold uppercase tracking-wide opacity-70 pl-2">
+                                                                                            {sub.name}
+                                                                                        </h5>
+                                                                                        <div className="flex flex-col gap-1 pl-3">
+                                                                                            {sub.items.map((item, itemIdx) => (
+                                                                                                <Link
+                                                                                                    key={itemIdx}
+                                                                                                    to={item.path}
+                                                                                                    onClick={() => setIsOpen(false)}
+                                                                                                    className="text-slate-300 hover:text-white text-xs font-medium py-1.5 transition-colors flex items-center gap-2"
+                                                                                                >
+                                                                                                    <div className="w-1 h-1 rounded-full bg-slate-600"></div>
+                                                                                                    {item.name}
+                                                                                                </Link>
+                                                                                            ))}
+                                                                                        </div>
+                                                                                    </div>
+                                                                                ))}
+                                                                            </div>
+                                                                        ) : (
+                                                                            <div className="flex flex-col gap-1 border-l border-white/10 pl-3">
+                                                                                {category.items?.map((item, itemIdx) => (
+                                                                                    <Link
+                                                                                        key={itemIdx}
+                                                                                        to={item.path}
+                                                                                        onClick={() => setIsOpen(false)}
+                                                                                        className="text-slate-300 hover:text-white text-xs font-medium py-1.5 transition-colors flex items-center gap-2"
+                                                                                    >
+                                                                                        <item.icon size={14} className="text-slate-500" />
+                                                                                        {item.name}
+                                                                                    </Link>
+                                                                                ))}
+                                                                            </div>
+                                                                        )}
                                                                     </div>
                                                                 ))}
                                                             </div>
@@ -376,25 +642,36 @@ const Navbar = () => {
 };
 
 // Helper Component for Mega Menu Cards (to clean up main code)
+// Helper Component for Mega Menu Cards (Sidebar Layout Style)
 const MegaMenuCard = ({ item }) => (
-    <MotionLink
+    <Link
         to={item.path}
-        whileHover={{ scale: 1.05, y: -2 }}
-        className="relative flex flex-col items-center justify-center gap-3 p-3 rounded-2xl bg-white shadow-xl border border-slate-100/60 hover:shadow-[0_0_30px_rgba(34,211,238,0.4)] hover:border-cyan-400 transition-all duration-300 group/card w-28 h-28"
+        className="flex items-start gap-4 p-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 hover:border-white/30 transition-all duration-300 group h-full"
     >
-        <div className="relative z-10 p-2 rounded-xl bg-slate-50/80 group-hover/card:bg-cyan-500 transition-all duration-300">
-            <item.icon size={24} className="text-cyan-600 group-hover/card:text-white transition-colors duration-300" />
+        <div className="p-3 rounded-lg bg-[#0b1d52] text-cyan-400 group-hover:bg-cyan-400 group-hover:text-[#081A4A] transition-all duration-300 shadow-lg shrink-0 mt-0.5 border border-white/5">
+            <item.icon size={22} />
         </div>
-        <span className="relative z-10 text-[10px] font-bold text-slate-600 uppercase tracking-wide group-hover/card:text-cyan-700 transition-colors text-center leading-tight">
-            {item.name}
-        </span>
-    </MotionLink>
+        <div className="flex flex-col gap-1.5">
+            <div className="flex items-center justify-between">
+                <span className="text-[15px] font-bold text-white transition-colors leading-tight">
+                    {item.name}
+                </span>
+                <RiArrowRightUpLine size={16} className="text-slate-500 group-hover:text-cyan-400 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0" />
+            </div>
+
+            {item.desc && (
+                <p className="text-xs text-blue-200 font-medium leading-relaxed opacity-90 group-hover:opacity-100">
+                    {item.desc}
+                </p>
+            )}
+        </div>
+    </Link>
 );
 
 const SocialIcons = ({ mobile }) => (
     <>
+        <a href="https://www.linkedin.com/company/infolexus-solutions/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-cyan-400 transition-colors"><Linkedin size={mobile ? 20 : 18} /></a>
         <a href="https://www.instagram.com/infolexus_solutions?igsh=MWxmOXFpanBseTJ2bA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="text-white hover:text-cyan-400 transition-colors"><Instagram size={mobile ? 20 : 18} /></a>
-        <a href="https://www.facebook.com/share/1DZN16dGP2/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-white hover:text-cyan-400 transition-colors"><Facebook size={mobile ? 20 : 18} /></a>
         <a href="https://x.com/InfolexusOff" target="_blank" rel="noopener noreferrer" className="text-white hover:text-cyan-400 transition-colors"><RiTwitterXFill size={mobile ? 20 : 18} /></a>
     </>
 );

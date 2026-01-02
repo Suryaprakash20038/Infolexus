@@ -31,7 +31,7 @@ export const hrServiceDetails = {
             { title: "Guide", desc: "Assistance through the process." },
             { title: "Place", desc: "Securing the career opportunity." }
         ],
-        technologies: ["Job Portals", "Recruitment Tools", "Skill Assessment"]
+        technologies: ["LinkedIn", "Zoom", "Microsoft Teams"]
     },
 
     // 2. Resume & Profile Optimisation
@@ -55,7 +55,7 @@ export const hrServiceDetails = {
             { title: "Draft", desc: "Creating professional content." },
             { title: "Optimize", desc: "Refining for ATS and recruiters." }
         ],
-        technologies: ["ATS Checkers", "LinkedIn", "Document Design Tools"]
+        technologies: ["LinkedIn", "Canva", "Office 365"]
     },
 
     // 3. Interview Preparation & Coaching
@@ -79,7 +79,7 @@ export const hrServiceDetails = {
             { title: "Feedback", desc: "Detailed improvement points." },
             { title: "Refine", desc: "Polishing interview techniques." }
         ],
-        technologies: ["Video Conferencing", "Recording Tools", "Feedback Forms"]
+        technologies: ["Zoom", "Microsoft Teams", "Slack"]
     },
 
     // 4. Career Guidance & Counselling
@@ -103,7 +103,7 @@ export const hrServiceDetails = {
             { title: "Advise", desc: "Strategic guidance sessions." },
             { title: "Support", desc: "Ongoing mentorship." }
         ],
-        technologies: ["Career Assessments", "Market Analysis Tools", "Planning Frameworks"]
+        technologies: ["LinkedIn", "Zoom", "Trello"]
     },
 
     // 5. Fresher Hiring & Entry-Level Programs
@@ -127,7 +127,7 @@ export const hrServiceDetails = {
             { title: "Intern", desc: "Practical industry experience." },
             { title: "Hire", desc: "Placement in permanent roles." }
         ],
-        technologies: ["Learning Management Systems", "Hiring Portals", "Assessment Tools"]
+        technologies: ["LinkedIn", "GitHub", "Salesforce"]
     },
 
     // 6. Campus Recruitment & Training Support
@@ -151,7 +151,7 @@ export const hrServiceDetails = {
             { title: "Conduct", desc: "Managing recruitment activities." },
             { title: "Recruit", desc: "Facilitating hiring of talent." }
         ],
-        technologies: ["Event Management Tools", "Aptitude Platforms", "Training Modules"]
+        technologies: ["Zoom", "Microsoft Teams", "Google Analytics"]
     },
 
     // 7. Contract-to-Hire Solutions
@@ -175,7 +175,7 @@ export const hrServiceDetails = {
             { title: "Review", desc: "Determination of long-term fit." },
             { title: "Convert", desc: "Offering permanent employment." }
         ],
-        technologies: ["Contract Management", "Performance Tracking", "HR Systems"]
+        technologies: ["SAP", "Oracle", "Salesforce"]
     },
 
     // 8. Employee Engagement & Retention Management
@@ -199,6 +199,66 @@ export const hrServiceDetails = {
             { title: "Implement", desc: "Rolling out engagement initiatives." },
             { title: "Sustain", desc: "Monitoring and adjusting for stability." }
         ],
-        technologies: ["Engagement Surveys", "HR Analytics", "Feedback Tools"]
+        technologies: ["Slack", "Microsoft Teams", "Asana"]
+    },
+    'permanent-hiring': {
+        title: "Permanent Recruitment",
+        subtitle: "Building the Foundation of Your Organization",
+        description: "Finding the right permanent employees is crucial for long-term business success. We specialize in identifying candidates who not only possess the required technical skills but also align with your company culture and values. Our rigorous screening process ensures that you build a stable, high-performing team committed to your organization's vision.",
+        image: staffImg,
+        benefits: ["Long-term Team Stability", "Cultural Alignment", "Reduced Hiring Costs Over Time"],
+        features: [
+            "Executive Search",
+            "Cultural Fit Assessment",
+            "Technical Screening",
+            "Reference Checks"
+        ],
+        process: [
+            { title: "Understand", desc: "Defining role requirements." },
+            { title: "Source", desc: "Headhunting top talent." },
+            { title: "Vet", desc: "Conducting thorough interviews." },
+            { title: "Close", desc: "Negotiating offers." }
+        ],
+        technologies: ["LinkedIn", "Salesforce", "HubSpot"]
+    },
+    'in-house': {
+        title: "In-House Developer Support",
+        subtitle: "Dedicated Developers Integrated into Your Workflow",
+        description: "Scale your development team instantly without the overhead of traditional hiring. We provide skilled developers who work exclusively for you, integrating seamlessly into your existing workflows and communication channels. Whether you need frontend wizards or backend architects, our in-house support acts as a natural extension of your team.",
+        image: requirementsImg,
+        benefits: ["Immediate Scalability", "Seamless Integration", "No Overhead Costs"],
+        features: [
+            "Dedicated Developers",
+            "Seamless Integration",
+            "Flexible Scaling",
+            "Complete Management Support"
+        ],
+        process: [
+            { title: "Requirement", desc: "Identifying tech stack needs." },
+            { title: "Select", desc: "Choosing from pre-vetted devs." },
+            { title: "Onboard", desc: "Integrating into your tools." },
+            { title: "Manage", desc: "Ongoing performance tracking." }
+        ],
+        technologies: ["Jira", "Slack", "GitHub", "Trello"]
+    },
+    'staffing': {
+        title: "IT & Non-IT Staffing",
+        subtitle: "Comprehensive Staffing Across All Sectors",
+        description: "Diverse business needs require diverse talent. We offer comprehensive staffing solutions for both IT technical roles and Non-IT operational positions. From software engineers to administrative staff, we leverage our vast network to find the right people for every department, ensuring your entire organization runs smoothly.",
+        image: jobSeekersImg,
+        benefits: ["One-Stop Staffing Solution", "Diverse Talent Pool", "Rapid Turnaround"],
+        features: [
+            "IT Technical Staffing",
+            "Administrative & Ops Staffing",
+            "Bulk Hiring",
+            "Cross-Industry Expertise"
+        ],
+        process: [
+            { title: "Scope", desc: "Analyzing cross-dept needs." },
+            { title: "Source", desc: "Leveraging diverse networks." },
+            { title: "Screen", desc: "Role-specific evaluations." },
+            { title: "Deploy", desc: "Placing candidates rapidly." }
+        ],
+        technologies: ["LinkedIn", "HubSpot", "Salesforce"]
     }
 };

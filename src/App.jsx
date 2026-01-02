@@ -7,7 +7,7 @@ import Walkthrough from './components/ui/Walkthrough';
 
 // Lazy Load Pages
 const Home = lazy(() => import('./pages/homepage/Home'));
-const Services = lazy(() => import('./pages/servicespage/Services'));
+
 const HRServices = lazy(() => import('./pages/hrservicespage/HRServices'));
 const HRServiceDetail = lazy(() => import('./pages/hrservicespage/HRServiceDetail'));
 const About = lazy(() => import('./pages/aboutpage/About'));
@@ -19,6 +19,9 @@ const Career = lazy(() => import('./pages/careerpage/Career'));
 const PricingPage = lazy(() => import('./components/ui/AnimatedPricingPage'));
 const DigitalMarketing = lazy(() => import('./pages/digitalmarketingpage/DigitalMarketing'));
 const DMServiceDetail = lazy(() => import('./pages/digitalmarketingpage/DMServiceDetail'));
+const TrainingServiceDetail = lazy(() => import('./pages/trainingspage/TrainingServiceDetail'));
+const CollegeTrainings = lazy(() => import('./pages/trainingspage/CollegeTrainings'));
+const GraduateTrainings = lazy(() => import('./pages/trainingspage/GraduateTrainings'));
 
 // Loading Fallback Component
 const PageLoader = () => (
@@ -43,12 +46,15 @@ function App() {
           <Suspense fallback={<PageLoader />}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/services" element={<Services />} />
+
               <Route path="/services/:id" element={<ServiceDetail />} />
               <Route path="/hr-services" element={<HRServices />} />
               <Route path="/hr-services/:id" element={<HRServiceDetail />} />
               <Route path="/dm-services" element={<DigitalMarketing />} />
               <Route path="/dm-services/:id" element={<DMServiceDetail />} />
+              <Route path="/trainings/colleges" element={<CollegeTrainings />} />
+              <Route path="/trainings/graduates" element={<GraduateTrainings />} />
+              <Route path="/trainings/:id" element={<TrainingServiceDetail />} />
               <Route path="/about" element={<About />} />
               <Route path="/technologies" element={<Technologies />} />
               <Route path="/clients" element={<Clients />} />
